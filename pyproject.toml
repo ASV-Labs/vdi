@@ -42,4 +42,4 @@ Homepage = "https://github.com/ASV-Labs/vdi"
 packages = ["vdi", "vdi.selftest"]
 
 [tool.setuptools.package-data]
-vdi = ["data/*.yaml", "release_data/*.json"]
+vdi = ["data/*.yaml", "release_data/*.json", "selftest/fonts/*"]

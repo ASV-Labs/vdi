@@ -19,9 +19,10 @@ SHOT_S = 3.0
 N_SHOTS = 3
 DUR = SHOT_S * N_SHOTS            # 9.0 s
 SPEECH_START, SPEECH_END = 0.3, DUR - 0.7   # 0.7 s end hold
-MONO = ["/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", "/System/Library/Fonts/Menlo.ttc",
+FONTS = Path(__file__).resolve().parent / "fonts"   # bundled DejaVu (Bitstream Vera license) -> identical fixtures on every OS
+MONO = [str(FONTS / "DejaVuSansMono.ttf"), "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf", "/System/Library/Fonts/Menlo.ttc",
         "/Library/Fonts/Courier New.ttf", "C:/Windows/Fonts/consola.ttf"]
-SANS_B = ["/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+SANS_B = [str(FONTS / "DejaVuSans-Bold.ttf"), "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
           "/Library/Fonts/Arial Bold.ttf", "C:/Windows/Fonts/arialbd.ttf"]
 
 TERMINAL = [
@@ -213,11 +214,15 @@ def build(out_dir: Path) -> dict[str, Path]:
     v2[int(3.0 * SR): int(6.0 * SR)] *= 10 ** (4.5 / 20)
     make("bad_join", audio=master(v2, room, tmp=tmp))
     # a zoomed wide terminal: panel fills the frame edge to edge and lines run off the right side
-    make("bad_edge", frames=timeline([shots[0], shot_image(1, panel_full=True, term_x=120, lines=[
-        "$ lineage fix --source sample-review", "changed evidenced sample-reviewer-04", "source named in the ledger entry"]), shots[2]]))
+    # lines start left of the frame and run past the right edge: cropped on BOTH sides
+    make("bad_edge", frames=timeline([shots[0], shot_image(1, panel_full=True, term_x=-70, lines=[
+        "~/repo $ lineage fix --source sample-review-04", "changed: evidenced sample-reviewer-04 entry", "source named in the ledger entry for claim 7",
+        "verified against the original page today"]), shots[2]]))
     make("bad_safe", frames=timeline([shots[0], shot_image(1, caption_y=1700), shots[2]]))
     make("bad_small", frames=timeline([shots[0], shot_image(1, term_font=20, lines=["re-ran sample-04 with source", "found ledger entry for claim", "verified against original page"]), shots[2]]))
-    make("bad_pii", frames=timeline([shots[0], shot_image(1, extra_line="demo.user@example.com"), shots[2]]))
+    # two independent PII kinds, so OCR variance on one can't hide the defect
+    make("bad_pii", frames=timeline([shots[0], shot_image(1, lines=["$ export KEY=sk-test4Fq9Zt2Lm8Xw", "user demo.user@example.com",
+                                                                   "re-ran sample-04"]), shots[2]]))
     make("bad_face", frames=timeline([shots[0], shot_image(1, tint=(0.86, 0.80, 0.72)), shots[2]]))
     small = [im for im in timeline(shots)]
     make("bad_format", frames=small, size=(720, 1280), sr=44100)
