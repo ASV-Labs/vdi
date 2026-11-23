@@ -28,6 +28,8 @@ import numpy as np
 
 from .paths import RELEASE_DATA
 SPEC = json.load(open(RELEASE_DATA / "gate-spec.json"))
+# OCR runs in a process pool; keep OpenMP-built tesseract (Debian/Ubuntu) to one thread per process.
+os.environ.setdefault("OMP_THREAD_LIMIT", "1")
 TH = SPEC["thresholds"]
 SR = 16000
 

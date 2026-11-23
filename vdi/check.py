@@ -297,6 +297,9 @@ PII_PATTERNS = [
 
 def _ocr_frames(path: str, fps: float, workdir: str) -> list[dict]:
     import pytesseract
+    # We parallelise across frames; an OpenMP-built tesseract (Debian/Ubuntu packages) would also spawn one
+    # thread per core per process and grind to a halt. One thread per tesseract process.
+    os.environ.setdefault("OMP_THREAD_LIMIT", "1")
     from PIL import Image, ImageOps
 
     pattern = os.path.join(workdir, "f_%05d.png")

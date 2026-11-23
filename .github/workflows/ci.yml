@@ -4,8 +4,12 @@ on:
   push:
   pull_request:
 
+env:
+  PYTHONUNBUFFERED: "1"
+
 jobs:
   test:
+    timeout-minutes: 25
     strategy:
       fail-fast: false
       matrix:

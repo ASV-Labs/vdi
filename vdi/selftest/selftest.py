@@ -28,6 +28,9 @@ EXPECT_FAIL = {
 
 
 def main(keep: bool = False) -> int:
+    import functools, builtins
+    global print
+    print = functools.partial(builtins.print, flush=True)  # progress shows up live in CI logs
     t0 = time.time()
     out = Path.cwd() / "vdi-selftest-fixtures" if keep else Path(tempfile.mkdtemp(prefix="vdi_fx_"))
     print(f"building fixtures in {out} …")
