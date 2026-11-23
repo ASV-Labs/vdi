@@ -129,4 +129,5 @@ rule covers. How a lesson becomes a rule and then a gate check (only with a know
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Built by [ASV Labs](https://github.com/ASV-Labs) · [@ASaltyVet](https://x.com/ASaltyVet). Code MIT
-([LICENSE](LICENSE)); corpus, docs and examples CC BY 4.0 ([corpus/LICENSE](corpus/LICENSE)).
+([LICENSE](LICENSE)); corpus, docs and examples CC BY 4.0 ([corpus/LICENSE](corpus/LICENSE)); bundled test fonts
+DejaVu ([NOTICE](NOTICE)).

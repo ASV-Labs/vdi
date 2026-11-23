@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "Video Design Intelligence: render gates, a sourced corpus and an MCP server for honest, finished short-form product videos. Code MIT; corpus/ CC BY 4.0."
 readme = "README.md"
 license = "MIT"
-license-files = ["LICENSE", "corpus/LICENSE"]
+license-files = ["LICENSE", "NOTICE", "corpus/LICENSE", "vdi/selftest/fonts/LICENSE-DejaVu.txt"]
 requires-python = ">=3.10"
 authors = [{ name = "ASV Labs" }]
 keywords = ["video", "short-form", "quality gate", "mcp", "loudness", "ocr", "agents"]

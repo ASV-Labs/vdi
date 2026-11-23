@@ -1,0 +1,7 @@
+Video Design Intelligence (VDI) — licensing notice
+
+- Code (vdi/, tests/): MIT License — see LICENSE.
+- Written corpus, docs and examples (corpus/, docs/, examples/): Creative Commons Attribution 4.0
+  International (CC BY 4.0) — see corpus/LICENSE.
+- Fonts in vdi/selftest/fonts/: DejaVu (Bitstream Vera license; DejaVu changes are public domain) —
+  see vdi/selftest/fonts/LICENSE-DejaVu.txt. Used only to render the self-test fixtures.
