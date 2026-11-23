@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+.cache/
+.pytest_cache/
+gate-results/
+vdi-selftest-fixtures/
+corpus/lessons/LESSONS-INBOX.md
+*.mp4
+*.mov
+*.m4a
+*.wav
+*.onnx
+.DS_Store
+.env

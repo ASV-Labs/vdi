@@ -1,0 +1,172 @@
+{
+  "id": "AX-03-v4",
+  "video_hint": "ax:out/AX-03-edit-v4.mp4",
+  "platform": "tiktok,reels,shorts",
+  "written_from": [
+    "ax:SCRIPTS.md",
+    "ax:PICKUPS.md",
+    "ax:V5-ADDENDUM.md",
+    "ax:GEMINI-REVIEW-4.md",
+    "ax:review-independent/meas/NOTES-working.md (v4 timings)"
+  ],
+  "note": "Declares INTENT (what should be said and shown), not what the v4 edit did. Evidence windows are the v4 times at which the words are spoken.",
+  "script_text": "Everybody wants a bigger usage cap. I want a bigger team. I'm Charles. Army vet. I build with AI agents, in public. This is ASV Labs. A bigger cap gives one worker a longer shift. A team gives each worker a different job. One agent doing everything needs every key. That's not a teammate. That's a single point of failure. That's what Alstead is built around. One desk for your work and the agents that help with it. Each agent gets a name, a job, and only the keys you give it. Anything you didn't grant is refused. Need more? It waits for you. Allow or deny. And a ledger keeps who did what and how it turned out. Alstead is an invite-only alpha. Follow ASV Labs for alpha updates.",
+  "proper_nouns": [
+    "Alstead",
+    "ALSTEAD",
+    "ASV Labs",
+    "Charles"
+  ],
+  "accepted_deviations": [
+    {
+      "script": "Army vet",
+      "spoken": "an Army soldier",
+      "note": "V5-ADDENDUM leave-as-spoken list"
+    }
+  ],
+  "caption_band_px": [
+    1000,
+    1380
+  ],
+  "source_audio": [
+    {
+      "path": "ax:raw/AX-0=3.mov",
+      "label": "take AX-0=3.mov",
+      "kind": "camera"
+    },
+    {
+      "path": "ax:pickups/AX-03.wav",
+      "label": "voice memo AX-03",
+      "kind": "voice"
+    },
+    {
+      "path": "ax:pickups/oncam/AX-03.wav",
+      "label": "on-camera pickup AX-03_Update.mov",
+      "kind": "camera"
+    }
+  ],
+  "evidence_beats": [
+    {
+      "id": "b01-line-card",
+      "t0": 9.9,
+      "t1": 15.1,
+      "text": "Longer shift vs. different job",
+      "run_id": "text-card",
+      "source_label": null,
+      "claim": "the-line",
+      "spoken": "A bigger cap gives one worker a longer shift. A team gives each worker a different job."
+    },
+    {
+      "id": "b02-hero",
+      "t0": 20.8,
+      "t1": 22.5,
+      "text": "Hand work to AI agents. Stay in charge.",
+      "run_id": "capture-alstead-330",
+      "source_label": null,
+      "claim": "alstead",
+      "spoken": "That's what Alstead is built around"
+    },
+    {
+      "id": "b03-agents",
+      "t0": 22.5,
+      "t1": 25.0,
+      "text": "Hire one with a name, a job and its own key",
+      "run_id": "capture-alstead-330",
+      "source_label": null,
+      "claim": "alstead",
+      "spoken": "Each agent gets a name, a job"
+    },
+    {
+      "id": "b04-permissions",
+      "t0": 25.0,
+      "t1": 28.9,
+      "text": "Refused unless you tick it.",
+      "run_id": "capture-alstead-330",
+      "source_label": null,
+      "claim": "alstead",
+      "spoken": "only the keys you give it. Anything you didn't grant is refused."
+    },
+    {
+      "id": "b05-needs-you",
+      "t0": 28.9,
+      "t1": 32.8,
+      "text": "Scribe wants to save a note.",
+      "run_id": "capture-alstead-330",
+      "source_label": null,
+      "claim": "alstead",
+      "spoken": "Need more? It waits for you. Allow or deny."
+    },
+    {
+      "id": "b06-ledger",
+      "t0": 32.8,
+      "t1": 36.2,
+      "text": "Who did what and how it turned out",
+      "run_id": "capture-alstead-330",
+      "source_label": null,
+      "claim": "alstead",
+      "spoken": "a ledger keeps who did what and how it turned out"
+    },
+    {
+      "id": "b07-url",
+      "t0": 36.2,
+      "t1": 40.8,
+      "text": "asv-labs.com/apps/alstead",
+      "run_id": "overlay",
+      "source_label": null,
+      "claim": "cta",
+      "spoken": "Alstead is an invite-only alpha"
+    }
+  ],
+  "known_blockers": [
+    {
+      "id": "AX03-K1",
+      "what": "32.9 s caption 'and the ledger' but he says 'and a ledger'",
+      "source": "V5-ADDENDUM AX-03"
+    },
+    {
+      "id": "AX03-K2",
+      "what": "7.23 s 'agents,' loses ~60 ms of /s/",
+      "source": "V5-ADDENDUM AX-03"
+    },
+    {
+      "id": "AX03-T2",
+      "what": "2-3 frame flash shot at 3.50 s",
+      "source": "V5-ADDENDUM T2"
+    },
+    {
+      "id": "AX03-T3",
+      "what": "Pickup grade mismatch at 9.88, 15.10, 18.20 s (skin dE 7.0-9.6)",
+      "source": "V5-ADDENDUM T3"
+    },
+    {
+      "id": "AX03-G1",
+      "what": "Evidence text cropped",
+      "source": "GEMINI-REVIEW-4 #1"
+    },
+    {
+      "id": "AX03-G2",
+      "what": "Caption 'for updates.' touches the asv-labs.com/apps/alstead lower third",
+      "source": "GEMINI-REVIEW-4 #2"
+    },
+    {
+      "id": "AX03-G3",
+      "what": "Ending too abrupt",
+      "source": "GEMINI-REVIEW-4 #3"
+    },
+    {
+      "id": "AX03-G4",
+      "what": "Rushed join 0:03-0:04",
+      "source": "GEMINI-REVIEW-4 #4"
+    },
+    {
+      "id": "AX03-G5",
+      "what": "Face: plastic smoothing and halo",
+      "source": "GEMINI-REVIEW-4 #5"
+    },
+    {
+      "id": "AX03-L",
+      "what": "1 s level steps 27.27 s +2.3 dB, 29.33 s +3.2 dB",
+      "source": "reviewer NOTES-working.md"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+ "gate_version": "0.1.0",
+ "run": "2026-11-23",
+ "files": {
+  "AX-01": {
+   "verdict": "FAIL",
+   "counts": {
+    "fail": 13,
+    "warn": 1,
+    "passed": 4
+   },
+   "listed_blockers": 15,
+   "caught": 11,
+   "partial": 3,
+   "missed": 1
+  },
+  "AX-02": {
+   "verdict": "FAIL",
+   "counts": {
+    "fail": 11,
+    "warn": 1,
+    "passed": 6
+   },
+   "listed_blockers": 10,
+   "caught": 5,
+   "partial": 3,
+   "missed": 2
+  },
+  "AX-03": {
+   "verdict": "FAIL",
+   "counts": {
+    "fail": 11,
+    "warn": 1,
+    "passed": 6
+   },
+   "listed_blockers": 10,
+   "caught": 5,
+   "partial": 2,
+   "missed": 3
+  },
+  "AX-04": {
+   "verdict": "FAIL",
+   "counts": {
+    "fail": 12,
+    "warn": 2,
+    "passed": 4
+   },
+   "listed_blockers": 14,
+   "caught": 7,
+   "partial": 3,
+   "missed": 4
+  },
+  "AX-05": {
+   "verdict": "FAIL",
+   "counts": {
+    "fail": 9,
+    "warn": 1,
+    "passed": 8
+   },
+   "listed_blockers": 10,
+   "caught": 5,
+   "partial": 3,
+   "missed": 2
+  }
+ },
+ "totals": {
+  "listed": 59,
+  "caught": 33,
+  "partial": 14,
+  "missed": 12
+ },
+ "detail": "docs/release-gate-proof-v4.md"
+}

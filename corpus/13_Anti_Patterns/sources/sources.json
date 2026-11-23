@@ -1,0 +1,87 @@
+{
+  "topic": "13_Anti_Patterns",
+  "as_of": "2026-11-23",
+  "note": "Internal-evidence locations under ax:workspace are outside this repo and read-only; external sources were fetched on the accessed date and are summarised, not copied.",
+  "sources": [
+    {
+      "id": "ax-boards",
+      "kind": "internal-evidence",
+      "title": "AX shorts boards (ASV Command)",
+      "publisher": "ASV Labs",
+      "location": "ax:BOARDS.md",
+      "credibility": "internal-primary",
+      "supports": "Board cards truncate SAY lines at three wrapped lines with an ellipsis.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-editnotes",
+      "kind": "internal-evidence",
+      "title": "AX edit notes v2-v4 (editor's own measurements)",
+      "publisher": "ASV Labs",
+      "location": "ax:out/EDIT-NOTES.md",
+      "credibility": "internal-measured",
+      "supports": "Face sharpening benchmark, DeepFilterNet floor measurements, true-peak after AAC, hold lengths, layout churn, what the v4 gate claimed.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-gr3",
+      "kind": "internal-evidence",
+      "title": "Gemini review 3 of v2 finals (transcript-only), with Claude's verification",
+      "publisher": "ASV Labs",
+      "location": "ax:GEMINI-REVIEW-3.md",
+      "credibility": "internal-unreliable-reviewer",
+      "supports": "Legibility, caption collisions, audio presence; FALSE caption-misspelling claims.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-gr4",
+      "kind": "internal-evidence",
+      "title": "Review 4 of v4 (Google AI Studio, real video+audio input), verified by Claude; blind audio A/B",
+      "publisher": "ASV Labs",
+      "location": "ax:GEMINI-REVIEW-4.md",
+      "credibility": "internal-measured",
+      "supports": "Cropped evidence, captions over screen content, abrupt endings, rushed joins, face processing, level steps; blind A/B ranking of three audio chains.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-qa-v4",
+      "kind": "internal-evidence",
+      "title": "shortskit v4 QA gate (qa_gate.py) and README",
+      "publisher": "ASV Labs",
+      "location": "ax:shortskit/qa_gate.py, shortskit/README.md",
+      "credibility": "internal-counterexample",
+      "supports": "A gate that passed 22/22 on files with 19 blocking defects: checks computed from the plan, tolerance lists, ASR 'either model' rule.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-v5",
+      "kind": "internal-evidence",
+      "title": "V5 addendum: independent reviewer's findings on v4, consolidated",
+      "publisher": "ASV Labs (Claude, Nov 23 2026)",
+      "location": "ax:V5-ADDENDUM.md",
+      "credibility": "internal-measured",
+      "supports": "Per-short blockers with timestamps; tool fixes T1-T3; how the gate must measure the rendered file.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "lessons-001",
+      "kind": "internal-evidence",
+      "title": "VDI-LESSONS-001: Short-form video production lessons (AX series, Nov 22-23 2026)",
+      "publisher": "ASV Labs",
+      "location": "corpus/lessons/VDI-LESSONS-001_AX_series.md (this repo)",
+      "credibility": "internal-measured",
+      "supports": "Canonical seed: every rule with what happened, the rule and the check.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "vdi-gate-proof",
+      "kind": "internal-evidence",
+      "title": "VDI gate proof run on the five known-bad v4 files",
+      "publisher": "ASV Labs",
+      "location": "docs/release-gate-proof-v4.md and examples/v4/receipts/ (this repo)",
+      "credibility": "internal-measured",
+      "supports": "Which listed blockers the gate catches and which it cannot.",
+      "accessed": "2026-11-23"
+    }
+  ]
+}

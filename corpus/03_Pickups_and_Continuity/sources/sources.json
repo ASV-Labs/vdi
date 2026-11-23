@@ -1,0 +1,87 @@
+{
+  "topic": "03_Pickups_and_Continuity",
+  "as_of": "2026-11-23",
+  "note": "Internal-evidence locations under ax:workspace are outside this repo and read-only; external sources were fetched on the accessed date and are summarised, not copied.",
+  "sources": [
+    {
+      "id": "ax-editnotes",
+      "kind": "internal-evidence",
+      "title": "AX edit notes v2-v4 (editor's own measurements)",
+      "publisher": "ASV Labs",
+      "location": "ax:out/EDIT-NOTES.md",
+      "credibility": "internal-measured",
+      "supports": "Face sharpening benchmark, DeepFilterNet floor measurements, true-peak after AAC, hold lengths, layout churn, what the v4 gate claimed.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-gr1",
+      "kind": "internal-evidence",
+      "title": "Gemini review 1 of the raw takes (gemini.google.com, transcript-only)",
+      "publisher": "ASV Labs",
+      "location": "ax:GEMINI-REVIEW-1.md",
+      "credibility": "internal-unreliable-reviewer",
+      "supports": "Framing, light, hook notes; shows that timestamps and wardrobe from this reviewer were wrong.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-gr4",
+      "kind": "internal-evidence",
+      "title": "Review 4 of v4 (Google AI Studio, real video+audio input), verified by Claude; blind audio A/B",
+      "publisher": "ASV Labs",
+      "location": "ax:GEMINI-REVIEW-4.md",
+      "credibility": "internal-measured",
+      "supports": "Cropped evidence, captions over screen content, abrupt endings, rushed joins, face processing, level steps; blind A/B ranking of three audio chains.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-pickups",
+      "kind": "internal-evidence",
+      "title": "AX pickups received (voice memos and on-camera updates)",
+      "publisher": "ASV Labs",
+      "location": "ax:PICKUPS.md",
+      "credibility": "internal-primary",
+      "supports": "Which lines were re-recorded, on which device; memo mic differs from the webcam mic.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-reviewer",
+      "kind": "internal-evidence",
+      "title": "Independent reviewer's working notes and measurement scripts (v4)",
+      "publisher": "ASV Labs",
+      "location": "ax:review-independent/meas/NOTES-working.md and review-independent/scripts/",
+      "credibility": "internal-measured",
+      "supports": "ASR passes, clipped phonemes in ms, join levels, digital-zero runs, flash frames, skin dE at cuts, screen-by-screen claims audit.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "ax-v5",
+      "kind": "internal-evidence",
+      "title": "V5 addendum: independent reviewer's findings on v4, consolidated",
+      "publisher": "ASV Labs (Claude, Nov 23 2026)",
+      "location": "ax:V5-ADDENDUM.md",
+      "credibility": "internal-measured",
+      "supports": "Per-short blockers with timestamps; tool fixes T1-T3; how the gate must measure the rendered file.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "lessons-001",
+      "kind": "internal-evidence",
+      "title": "VDI-LESSONS-001: Short-form video production lessons (AX series, Nov 22-23 2026)",
+      "publisher": "ASV Labs",
+      "location": "corpus/lessons/VDI-LESSONS-001_AX_series.md (this repo)",
+      "credibility": "internal-measured",
+      "supports": "Canonical seed: every rule with what happened, the rule and the check.",
+      "accessed": "2026-11-23"
+    },
+    {
+      "id": "vdi-gate-proof",
+      "kind": "internal-evidence",
+      "title": "VDI gate proof run on the five known-bad v4 files",
+      "publisher": "ASV Labs",
+      "location": "docs/release-gate-proof-v4.md and examples/v4/receipts/ (this repo)",
+      "credibility": "internal-measured",
+      "supports": "Which listed blockers the gate catches and which it cannot.",
+      "accessed": "2026-11-23"
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python: ["3.10", "3.13"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - name: System tools (ffmpeg, tesseract)
+        run: |
+          if [ "$RUNNER_OS" = "Linux" ]; then
+            sudo apt-get update -q && sudo apt-get install -y -q ffmpeg tesseract-ocr tesseract-ocr-eng
+          else
+            brew install ffmpeg tesseract
+          fi
+      - name: Install
+        run: pip install -e ".[mcp,dev]"
+      - name: Corpus validator
+        run: vdi validate
+      - name: Tests (CLI, packaging, release-gate pre-flight with mocked Whisper)
+        run: python -m pytest -q tests/
+      - name: MCP smoke test (engine + stdio handshake from cwd=/)
+        run: python tests/mcp_smoke.py
+      - name: MCP guidance evals
+        run: python tests/evals/run_evals.py
+      - name: Quick-check self-test (every check must fail its known-bad fixture)
+        run: vdi selftest
+# The release gate's end-to-end run needs ~2 GB of Whisper models and real footage, so it is not run in CI.
+# Its packaging and pre-flight are tested above with faster-whisper mocked; see examples/v3/ for a real run.

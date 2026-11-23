@@ -1,0 +1,131 @@
+{
+  "id": "VDI-GATE-SPEC",
+  "version": "0.1.0",
+  "status": "Draft",
+  "as_of": "2026-11-23",
+  "rule": "Every check measures the rendered mp4 (frames, OCR of frames, the final audio, envelopes against the source audio). Nothing is read from an edit plan. The only allowed exceptions are the owner-accepted spoken deviations listed in the manifest.",
+  "provenance_note": "Thresholds marked AX come from VDI-LESSONS-001 (AX series, measured internally Nov 22-23 2026). Thresholds marked SOURCED cite a platform or standards document in 09_Platform_Formats/sources/sources.json. Thresholds marked HEURISTIC are rules of thumb that have not been measured with real viewers.",
+  "thresholds": {
+    "container": {
+      "width": 1080,
+      "height": 1920,
+      "fps": 30,
+      "video_codec": "h264",
+      "audio_codec": "aac",
+      "min_duration_s": 15,
+      "max_duration_s": 60,
+      "basis": "AX house format; 9:16 1080x1920 is SOURCED for Shorts/Reels/TikTok (see 09_Platform_Formats). Duration window is a house rule (HEURISTIC), tighter than every platform maximum."
+    },
+    "loudness": {
+      "integrated_lufs": -14.0,
+      "tolerance_lu": 0.5,
+      "max_true_peak_dbtp": -1.5,
+      "basis": "AX house target. -14 LUFS is the YouTube playback reference reported by secondary sources; platforms do not publish a single upload target for short-form (see 07_Audio research-gaps). True peak -1.5 dBTP measured on the final AAC because the AAC encoder raised peaks by about 1 dB in v2/v3 (AX)."
+    },
+    "shots": {
+      "min_shot_frames": 12,
+      "hard_change_fraction": 0.35,
+      "pixel_delta": 12,
+      "merge_gap_frames": 1,
+      "basis": "AX: 2-3 frame flash shots at the hook/intro join in AX-01..04 v4. 12 frames is a house rule (HEURISTIC)."
+    },
+    "blank_panel": {
+      "max_blank_frames": 1,
+      "std_max": 4.0,
+      "mean_max": 24,
+      "long_run_frames": 15,
+      "basis": "AX: black camera panel for 2 frames (AX-01 20.07 s) and about 7 frames (AX-04 38.07 s) before a screen arrived."
+    },
+    "word_endings": {
+      "max_lost_tail_ms": 60,
+      "hf_cutoff_hz": 3500,
+      "over_floor_db": 9,
+      "pause_after_ms": 130,
+      "basis": "AX: quiet final /s/ /ts/ /st/ cut at segment ends (faceplants, rest, pass, confidence, agents). Detection on a >=3.5 kHz envelope as well as full band."
+    },
+    "ending": {
+      "min_hold_s": 0.6,
+      "max_hold_s": 1.0,
+      "decayed_below_speech_db": 30,
+      "basis": "AX: every v4 file ended about 0.13 s after the last word; review 4 heard it as chopped on a looping feed. 0.6-0.8 s target is a house rule (HEURISTIC)."
+    },
+    "sentence_gaps": {
+      "min_gap_s": 0.12,
+      "silence_below_speech_db": 25,
+      "basis": "AX: joins flagged as rushed in review 4. 0.12 s is a house rule (HEURISTIC)."
+    },
+    "join_level": {
+      "max_step_db": 2.0,
+      "window_s": 1.0,
+      "speech_frames_within_db": 18,
+      "basis": "AX: independent reviewer measured 2.0-3.2 dB 1 s speech-level steps at 11 joins in v4 while the editor's gate (momentary LUFS) said 1.3 LU."
+    },
+    "dropouts": {
+      "max_zero_run_ms": 1.0,
+      "basis": "AX: joins dipped to digital zero for 8-9 ms (AX-04 1.73 s, AX-05 15.83 s, 24.10 s)."
+    },
+    "captions": {
+      "safe_top_frac": 0.08,
+      "safe_bottom_frac": 0.2,
+      "safe_right_frac": 0.12,
+      "edge_margin_px": 16,
+      "clearance_px": 48,
+      "max_late_s": 0.35,
+      "max_early_s": 0.5,
+      "both_asr_models_must_agree": true,
+      "asr_models": [
+        "small.en",
+        "medium.en"
+      ],
+      "basis": "AX house safe area (top 8%, bottom 20%, right 12%) chosen to clear the platform UI; platform guidance is SOURCED in 09_Platform_Formats. Clearance 48 px and timing 0.3 s are AX house rules (HEURISTIC)."
+    },
+    "evidence": {
+      "min_glyph_px_at_1080": 28,
+      "min_hold_s": 1.6,
+      "max_drift_px": 6,
+      "min_text_coverage": 0.9,
+      "edge_margin_px": 16,
+      "safe_top_frac": 0.08,
+      "safe_bottom_frac": 0.2,
+      "basis": "AX: cropped evidence lines in all five v4 files; AX-04 verify line readable still for 0.47 s. 1.6 s and 28 px are house rules (HEURISTIC, not measured with viewers). Ink must also stay left of the right 12% (LESSONS-INBOX 2026-11-23, VDI-LESSONS-002 8.1).",
+      "safe_right_frac": 0.12
+    },
+    "face": {
+      "max_skin_delta_e": 3.5,
+      "basis": "AX: pickups shot later measured skin dE 6.3-9.6 at the cut versus 0.2-3.1 within a take."
+    },
+    "pii": {
+      "patterns": [
+        "email (including masked)",
+        "sign-in code next to the word code",
+        "API keys and tokens",
+        "PLAN_REQUIRED",
+        "RATE_LIMITED"
+      ],
+      "basis": "AX: a masked email reached the AX-01 cut; free-trial runs printed PLAN_REQUIRED and RATE_LIMITED."
+    },
+    "ocr": {
+      "engine": "tesseract 5 (pytesseract)",
+      "sample_fps": 10
+    },
+    "asr": {
+      "engine": "faster-whisper",
+      "models": [
+        "small.en",
+        "medium.en"
+      ],
+      "note": "pass audio as a float32 numpy array; the av decode path is broken in this environment"
+    }
+  },
+  "cannot_check": [
+    "Whether a face looks plastic or haloed (no reliable metric; needs eyes).",
+    "Whether a voice sounds natural, warbly or pumped (needs ears or a blind A/B).",
+    "Proper nouns: both ASR models mishear them, so they are listed for a human listen, not passed or failed.",
+    "Whether the on-screen material is a real run (the gate checks the declared run id and the visible source label, not the truth of the run).",
+    "Whether a claim is true. It checks that the declared proof text is readable on screen while the claim is spoken.",
+    "Caption drawn over the face during a transition (no face/caption overlap model).",
+    "Font legibility issues such as 0 vs O.",
+    "Layout churn and pacing feel.",
+    "Anything outside the declared evidence beats: a beat the manifest forgets is not checked."
+  ]
+}

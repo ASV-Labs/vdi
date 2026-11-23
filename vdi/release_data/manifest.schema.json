@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "vdi-gate-manifest",
+  "title": "VDI gate manifest",
+  "description": "Declares the INTENT of a short (what should be said and shown). The gate checks the rendered mp4 against it. Nothing here describes how the edit was made.",
+  "type": "object",
+  "required": ["id", "script_text", "source_audio", "evidence_beats"],
+  "properties": {
+    "id": {"type": "string", "description": "Release id, e.g. AX-01-v5"},
+    "platform": {"type": "string", "description": "Target platforms, comma separated (tiktok, reels, shorts, x)"},
+    "script_text": {"type": "string", "description": "The intended spoken text (the script), plain sentences"},
+    "proper_nouns": {"type": "array", "items": {"type": "string"}, "description": "Names, products, handles. Reported for a human listen when the two ASR models do not confirm them; never excused silently"},
+    "accepted_deviations": {
+      "type": "array",
+      "description": "Owner-accepted differences between script and audio. The ONLY tolerance the gate allows.",
+      "items": {"type": "object", "required": ["spoken"], "properties": {
+        "script": {"type": "string"}, "spoken": {"type": "string"}, "note": {"type": "string", "description": "Who accepted it and when"}}}
+    },
+    "caption_band_px": {"type": "array", "items": {"type": "integer"}, "minItems": 2, "maxItems": 2, "description": "y range (at 1920 tall) where burned-in captions live; captions are OCR'd there"},
+    "source_audio": {
+      "type": "array", "minItems": 1,
+      "items": {"type": "object", "required": ["path"], "properties": {
+        "path": {"type": "string", "description": "Original take or pickup file (video or audio); the final's speech is located in these by cross-correlation"},
+        "label": {"type": "string"}, "kind": {"enum": ["camera", "voice"]}}}
+    },
+    "evidence_beats": {
+      "type": "array",
+      "items": {"type": "object", "required": ["id", "t0", "t1", "text"], "properties": {
+        "id": {"type": "string"},
+        "t0": {"type": "number", "description": "Window start (s) in the final, when the claim is spoken"},
+        "t1": {"type": "number"},
+        "text": {"type": "string", "description": "Exact text that must be readable: whole line in frame, still, >= 28 px, >= 1.6 s"},
+        "run_id": {"type": ["string", "null"], "description": "The real run or capture the footage comes from"},
+        "source_label": {"type": ["string", "null"], "description": "On-screen label required when this beat's run differs from its neighbours in the same claim"},
+        "claim": {"type": ["string", "null"], "description": "Claim id; adjacent beats in one claim must share run_id or show a readable source_label"},
+        "spoken": {"type": "string", "description": "The words this beat proves (for humans)"}}}
+    },
+    "known_blockers": {"type": "array", "description": "Fixtures only: blockers documented by reviewers, used to prove the gate", "items": {"type": "object"}}
+  }
+}

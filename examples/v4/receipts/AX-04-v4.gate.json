@@ -1,0 +1,834 @@
+{
+ "id": "AX-04-v4",
+ "file": "ax:out/AX-04-edit-v4.mp4",
+ "manifest": "fixtures/AX-04-v4.manifest.json",
+ "gate_version": "0.1.0",
+ "verdict": "FAIL",
+ "ran_at": "2026-11-23 07:30:33",
+ "runtime_s": 76.81626105308533,
+ "counts": {
+  "fail": 12,
+  "warn": 2,
+  "passed": 4
+ },
+ "checks": [
+  {
+   "check": "container",
+   "status": "PASS",
+   "measured": "1080x1920 30.00 fps h264+aac 46.57 s"
+  },
+  {
+   "check": "loudness and true peak (ebur128 on the final file)",
+   "status": "PASS",
+   "measured": "-14.1 LUFS integrated, true peak -2.0 dBTP"
+  },
+  {
+   "check": "shot lengths (scene detection per region, < 12 frames fails)",
+   "status": "FAIL",
+   "measured": "10 hard changes (whole frame); shortest-shot violations: 1",
+   "detail": [
+    "2-frame shot at 4.73 s (whole)"
+   ],
+   "defect_class": "flash shots"
+  },
+  {
+   "check": "black or blank panels (> 1 frame between content fails)",
+   "status": "FAIL",
+   "measured": "1 short black-panel runs, 0 long ones",
+   "detail": [
+    "41% of the frame height went black for 8 frames at 38.07-38.33 s"
+   ],
+   "defect_class": "black panel before a screen"
+  },
+  {
+   "check": "face continuity (skin dE < 3.5 across cuts)",
+   "status": "FAIL",
+   "measured": "13 face-to-face boundaries measured, largest dE 4.4",
+   "detail": [
+    "1.75 s: skin dE 4.4 (L 44->48, b 10->9)"
+   ],
+   "defect_class": "pickup grade mismatch"
+  },
+  {
+   "check": "word endings against the source envelopes (full band and >= 3.5 kHz)",
+   "status": "FAIL",
+   "measured": "21 segment ends compared; 5 lost tails before a pause",
+   "detail": [
+    "4.66 s 'exist.': source speech runs 80 ms past the point the final stops reproducing it (take AX-04.mov)",
+    "6.65 s 'Labs': source speech runs 80 ms past the point the final stops reproducing it (take AX-04.mov)",
+    "9.87 s 'provenance': source speech runs 70 ms past the point the final stops reproducing it (take AX-04.mov)",
+    "18.27 s 'agent.': source speech runs 80 ms past the point the final stops reproducing it (voice memo AX-04)",
+    "29.76 s 'source.': source speech runs 70 ms past the point the final stops reproducing it (take AX-04.mov)",
+    "WARN 15.79 s 'the': source speech runs 500 ms past the point the final stops reproducing it (voice memo AX-04); the source does not pause right after, so this may be a deliberate mid-phrase cut",
+    "WARN 32.50 s 'observed,': source speech runs 500 ms past the point the final stops reproducing it (take AX-04.mov); the source does not pause right after, so this may be a deliberate mid-phrase cut",
+    "WARN 38.27 s 'catalog.': source speech runs 360 ms past the point the final stops reproducing it (take AX-04.mov); the source does not pause right after, so this may be a deliberate mid-phrase cut"
+   ],
+   "defect_class": "cut word endings"
+  },
+  {
+   "check": "ending hold after the last word",
+   "status": "FAIL",
+   "measured": "hold 0.28 s after the last sound at 46.29 s",
+   "detail": [
+    "last sound ends 0.28 s before the file ends (needs 0.6-1.0 s)"
+   ],
+   "defect_class": "abrupt ending"
+  },
+  {
+   "check": "inter-sentence gaps (>= 0.12 s below speech -25 dB)",
+   "status": "FAIL",
+   "measured": "15 sentence boundaries, 2 rushed",
+   "detail": [
+    "18.24 s 'agent.' -> 'Then': longest pause 90 ms",
+    "29.70 s 'source.' -> 'Every': longest pause 70 ms"
+   ],
+   "defect_class": "rushed joins"
+  },
+  {
+   "check": "1 s speech-level step across joins (< 2.0 dB)",
+   "status": "FAIL",
+   "measured": "20 joins measured, largest step 2.4 dB",
+   "detail": [
+    "13.60 s (source change): +2.4 dB",
+    "29.80 s (cut inside one source): +2.1 dB",
+    "35.50 s (source change): +2.4 dB",
+    "38.00 s (source change): +2.3 dB"
+   ],
+   "defect_class": "level steps at joins"
+  },
+  {
+   "check": "room tone through joins (no digital-zero dropouts)",
+   "status": "FAIL",
+   "measured": "9 zero runs > 1.0 ms",
+   "detail": [
+    "1.73 s: 9 ms of digital zero",
+    "4.73 s: 2 ms of digital zero",
+    "11.03 s: 5 ms of digital zero",
+    "15.40 s: 6 ms of digital zero",
+    "27.30 s: 1 ms of digital zero",
+    "29.80 s: 2 ms of digital zero",
+    "32.04 s: 1 ms of digital zero",
+    "34.00 s: 1 ms of digital zero",
+    "41.66 s: 6 ms of digital zero"
+   ],
+   "defect_class": "dropouts at joins"
+  },
+  {
+   "check": "spoken words vs script (differences must be on the owner-accepted list)",
+   "status": "FAIL",
+   "measured": "8 unaccepted differences; 3 spots where the two ASR models disagree",
+   "detail": [
+    "~3.2 s script '-' / heard by both models 'probably doesnt exist'",
+    "~5.3 s script '-' / heard by both models 'from'",
+    "~6.5 s script '-' / heard by both models 'and'",
+    "~10.6 s script 'agent' not confirmed: the models disagree (small.en 'AID.' / medium.en 'agent.')",
+    "~25.9 s script 'and' not confirmed: the models disagree (small.en 'and' / medium.en '')",
+    "~29.7 s script 'that moved' / heard by both models '-'",
+    "~37.0 s script 'plugin' / heard by both models 'plug in'",
+    "~43.6 s script '-' / heard by both models 'below'",
+    "WARN check by ear: ~39.4 s 'nous' (proper noun not confirmed by both models)",
+    "INFO models disagree: 10.6 s small.en 'AID.' vs medium.en 'agent.'",
+    "INFO models disagree: 26.5 s small.en 'and' vs medium.en ''",
+    "INFO models disagree: 39.4 s small.en 'Noose' vs medium.en 'Neuse'"
+   ],
+   "defect_class": "unaccepted script deviations / misheard words"
+  },
+  {
+   "check": "captions match the final audio (OCR of frames vs transcript; both ASR models must agree)",
+   "status": "WARN",
+   "measured": "55 caption events read; 0 words not heard, 0 heard by one model only, 1 proper nouns to check by ear",
+   "detail": [
+    "WARN check by ear: 39.4 s 'nous' (proper noun; ASR models disagree or miss it)"
+   ],
+   "defect_class": "caption text differs from speech"
+  },
+  {
+   "check": "caption timing (onset within 0.35 s of the word; WARN only: OCR of animated captions is +-0.2 s)",
+   "status": "WARN",
+   "measured": "2 late/early caption events",
+   "detail": [
+    "2.80 s 'number come' appears 0.48 s after the word",
+    "33.10 s 'or inferred' appears 0.44 s after the word"
+   ],
+   "defect_class": "late captions"
+  },
+  {
+   "check": "caption safe area (top 8%, bottom 20%, right 12% clear)",
+   "status": "PASS",
+   "measured": "0 events outside",
+   "defect_class": "captions in platform UI"
+  },
+  {
+   "check": "caption clearance from other on-screen text (>= 48 px)",
+   "status": "FAIL",
+   "measured": "4 caption events crowd other text",
+   "detail": [
+    "34.1-34.7 s caption 'The guesses carry': '\"observed\"' within 48 px of the caption",
+    "38.4-38.5 s caption 'Reviewed and': '3 weeks ago' within 48 px of the caption",
+    "39.4-40.5 s caption 'Nous Research': 'lineage \u2014' under the caption",
+    "40.6-41.7 s caption 'MIT License.': '3 weeks ago' within 48 px of the caption"
+   ],
+   "defect_class": "captions over screen text"
+  },
+  {
+   "check": "evidence lines (whole line in frame, still, >= 28 px, >= 1.6 s)",
+   "status": "FAIL",
+   "measured": "14 beats, 8 failing",
+   "detail": [
+    "b03-model [16.0-18.3 s] 'by main (glm-5.3)': still+readable 0.0 s (needs 1.6); glyph height 27 px < 28; glyph height 28 px < 28",
+    "b04-graph-file [18.3-20.1 s] 'q3-note.md': still+readable 1.5 s (needs 1.6); glyph height 26 px < 28; line moves while read",
+    "b05-graph-tool [20.1-21.8 s] 'terminal': still+readable 0.6 s (needs 1.6); ",
+    "b06-inspector [21.8-24.2 s] 'CONTENT HASH AT FETCH': still+readable 0.0 s (needs 1.6); expected text not found on screen",
+    "b07-sed [24.2-27.3 s] 'sed -i 's/48900/52900/' sample-revenue.csv': still+readable 0.1 s (needs 1.6); line enters the right 12% (platform rail), ink to x=1006; line enters the right 12% (platform rail), ink to x=1008; line enters the right 12% (platform rail), ink to x=1026; line enters the right 12% (platform rail), ink to x=1030; line incomplete in frame (best read '$ sed -i 'S/48900/52900/' $ her",
+    "b08-verdict [27.3-29.5 s] 'verdict: stale': still+readable 0.6 s (needs 1.6); line moves while read; line touches the frame edge",
+    "b09-changed [27.3-29.5 s] 'changed evidenced sample-revenue.csv': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read '$ sed -i 's/48900/52900/' sample-revenue.csv'); line incomplete in frame (best read '$ sed all 's/48900/52900/' samp le- revenue. csv'); line incomplete in frame (best read ''s/48900/52900/' samp Le- revenue. CSV'); line incomplete in frame (best read '.md: uncha",
+    "b13-mit [40.0-41.7 s] 'MIT License': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read '(community tier, tools category), pinned to Ge = Ga ~'); line incomplete in frame (best read 'feat(plugin-cati lineage'); line incomplete in frame (best read 'teknium1 merged 5 commits into NousResearch:m... from POGLOL')"
+   ],
+   "defect_class": "cropped / moving / unreadable evidence"
+  },
+  {
+   "check": "run ids and source labels (one claim = one run, or a visible label)",
+   "status": "FAIL",
+   "measured": "12 checks",
+   "detail": [
+    "b04-graph-file: declared source label 'demo run from the lineage repo' not readable on screen in 18.3-20.1 s",
+    "b05-graph-tool: declared source label 'demo run from the lineage repo' not readable on screen in 20.1-21.8 s",
+    "b06-inspector: declared source label 'demo run from the lineage repo' not readable on screen in 21.8-24.2 s",
+    "claim 'q3-note-lineage': beat b03-model (run ax04-hermes-glm53-2026-11-22) next to beat b04-graph-file (run lineage-repo-demo-2026-11-05) with no readable source label",
+    "claim 'q3-note-lineage': beat b06-inspector (run lineage-repo-demo-2026-11-05) next to beat b07-sed (run ax04-hermes-glm53-2026-11-22) with no readable source label"
+   ],
+   "defect_class": "mixed runs presented as one"
+  },
+  {
+   "check": "PII and plan-wall sweep (OCR of every sampled frame)",
+   "status": "PASS",
+   "measured": "0 findings",
+   "defect_class": "personal data / plan walls on screen"
+  }
+ ],
+ "evidence": [
+  {
+   "id": "b01-show",
+   "text": "hermes lineage show q3-note.md",
+   "window": [
+    10.8,
+    13.7
+   ],
+   "readable_still_hold_s": 2.7,
+   "best_coverage": 1.0,
+   "best_read": "$ hermes lineage show g3-note.md q3-note.md (0a321844207e..., 504 bytes)",
+   "glyph_px": 29.0,
+   "run_id": "ax04-hermes-glm53-2026-11-22",
+   "status": "ok",
+   "reasons": []
+  },
+  {
+   "id": "b02-sources",
+   "text": "from 3 source(s):",
+   "window": [
+    13.7,
+    16.0
+   ],
+   "readable_still_hold_s": 2.2,
+   "best_coverage": 1.0,
+   "best_read": "fro from 3 source(s):",
+   "glyph_px": 29.0,
+   "run_id": "ax04-hermes-glm53-2026-11-22",
+   "status": "ok",
+   "reasons": []
+  },
+  {
+   "id": "b03-model",
+   "text": "by main (glm-5.3)",
+   "window": [
+    16.0,
+    18.3
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "by main (glm-5.3)",
+   "glyph_px": 27.8,
+   "run_id": "ax04-hermes-glm53-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "glyph height 27 px < 28",
+    "glyph height 28 px < 28"
+   ]
+  },
+  {
+   "id": "b04-graph-file",
+   "text": "q3-note.md",
+   "window": [
+    18.3,
+    20.1
+   ],
+   "readable_still_hold_s": 1.5,
+   "best_coverage": 1.0,
+   "best_read": "q3-note.md (0a321844207e...,",
+   "glyph_px": 30.8,
+   "run_id": "lineage-repo-demo-2026-11-05",
+   "status": "FAIL",
+   "reasons": [
+    "glyph height 26 px < 28",
+    "line moves while read"
+   ]
+  },
+  {
+   "id": "b05-graph-tool",
+   "text": "terminal",
+   "window": [
+    20.1,
+    21.8
+   ],
+   "readable_still_hold_s": 0.6,
+   "best_coverage": 1.0,
+   "best_read": "terminal",
+   "glyph_px": 35.0,
+   "run_id": "lineage-repo-demo-2026-11-05",
+   "status": "FAIL",
+   "reasons": []
+  },
+  {
+   "id": "b06-inspector",
+   "text": "CONTENT HASH AT FETCH",
+   "window": [
+    21.8,
+    24.2
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 0.48,
+   "best_read": "site:hermes-agent_nousresearch.com/docs/ Herme Agent documentation overview",
+   "glyph_px": null,
+   "run_id": "lineage-repo-demo-2026-11-05",
+   "status": "FAIL",
+   "reasons": [
+    "expected text not found on screen"
+   ]
+  },
+  {
+   "id": "b07-sed",
+   "text": "sed -i 's/48900/52900/' sample-revenue.csv",
+   "window": [
+    24.2,
+    27.3
+   ],
+   "readable_still_hold_s": 0.1,
+   "best_coverage": 1.0,
+   "best_read": "$ sed -i 's/48900/52900/' sample- revenue. csvff",
+   "glyph_px": 31.0,
+   "run_id": "ax04-hermes-glm53-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line enters the right 12% (platform rail), ink to x=1006",
+    "line enters the right 12% (platform rail), ink to x=1008",
+    "line enters the right 12% (platform rail), ink to x=1026",
+    "line enters the right 12% (platform rail), ink to x=1030",
+    "line incomplete in frame (best read '$ sed -i 'S/48900/52900/' $ hermes Lineage verify q3-note.ff')",
+    "line outside the safe area (y 136-207)",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b08-verdict",
+   "text": "verdict: stale",
+   "window": [
+    27.3,
+    29.5
+   ],
+   "readable_still_hold_s": 0.6,
+   "best_coverage": 1.0,
+   "best_read": "q3-note.md: unchanged > verdict: stale",
+   "glyph_px": 29.0,
+   "run_id": "ax04-hermes-glm53-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line moves while read",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b09-changed",
+   "text": "changed evidenced sample-revenue.csv",
+   "window": [
+    27.3,
+    29.5
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 0.89,
+   "best_read": "evidenced chart.svg evidenced sample-revenue.cs",
+   "glyph_px": null,
+   "run_id": "ax04-hermes-glm53-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read '$ sed -i 's/48900/52900/' sample-revenue.csv')",
+    "line incomplete in frame (best read '$ sed all 's/48900/52900/' samp le- revenue. csv')",
+    "line incomplete in frame (best read ''s/48900/52900/' samp Le- revenue. CSV')",
+    "line incomplete in frame (best read '.md: unchanged > verdict: stale yt: ax:screens/')",
+    "line incomplete in frame (best read 'evidenced chart. evidenced sample')",
+    "line incomplete in frame (best read 'evidenced chart.svc evidenced sample-re')",
+    "line incomplete in frame (best read 'evidenced chart.svg evidenced sample- revenue')",
+    "line incomplete in frame (best read 'evidenced chart.svg evidenced sample-re\\')",
+    "line incomplete in frame (best read 'evidenced chart.svg evidenced sample-revent')",
+    "line incomplete in frame (best read 'evidenced chart.svg evidenced sample-revenue.cs')",
+    "line incomplete in frame (best read 'evidenced chart.svg evidenced sample-rever')",
+    "line incomplete in frame (best read 'evidenced sample inferred make c')",
+    "line incomplete in frame (best read 'evidenced sample- inferred make ch')",
+    "line incomplete in frame (best read 'evidenced sample- inferred make ct')",
+    "line incomplete in frame (best read 'evidenced sample-r inferred make che')",
+    "line incomplete in frame (best read 'nd: unchanged > verdict: stale ax:screens/ax04/')",
+    "line incomplete in frame (best read 'sample- revenue. csv')",
+    "line incomplete in frame (best read 'unchanged > verdict: stale ax:screens/ax04/demo')",
+    "line incomplete in frame (best read 'wrote /home/claude/: /48900/52900/' sample-revenu sgn')"
+   ]
+  },
+  {
+   "id": "b10-observed",
+   "text": "observed",
+   "window": [
+    29.5,
+    31.5
+   ],
+   "readable_still_hold_s": 1.9,
+   "best_coverage": 1.0,
+   "best_read": "\"observed\"",
+   "glyph_px": 30.0,
+   "run_id": "ax04-hermes-glm53-2026-11-22",
+   "status": "ok",
+   "reasons": []
+  },
+  {
+   "id": "b11-inferred",
+   "text": "\"basis\": \"inferred\"",
+   "window": [
+    32.5,
+    35.6
+   ],
+   "readable_still_hold_s": 2.1,
+   "best_coverage": 1.0,
+   "best_read": "\"basis\": \"inferred\",",
+   "glyph_px": 32.0,
+   "run_id": "ax04-hermes-glm53-2026-11-22",
+   "status": "ok",
+   "reasons": []
+  },
+  {
+   "id": "b12-catalog",
+   "text": "Reviewed and merged by Nous Research",
+   "window": [
+    35.6,
+    38.3
+   ],
+   "readable_still_hold_s": 2.3,
+   "best_coverage": 1.0,
+   "best_read": "catalog. Reviewed and merged by Nous Research in #149244.",
+   "glyph_px": 37.0,
+   "run_id": "ax04-hermes-glm53-2026-11-22-github",
+   "status": "ok",
+   "reasons": []
+  },
+  {
+   "id": "b13-mit",
+   "text": "MIT License",
+   "window": [
+    40.0,
+    41.7
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 0.73,
+   "best_read": "teknium1 merged 5 commits into NousResearch:m... from POGLOL:catalog...",
+   "glyph_px": null,
+   "run_id": "capture-github-repo",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read '(community tier, tools category), pinned to Ge = Ga ~')",
+    "line incomplete in frame (best read 'feat(plugin-cati lineage')",
+    "line incomplete in frame (best read 'teknium1 merged 5 commits into NousResearch:m... from POGLOL')"
+   ]
+  },
+  {
+   "id": "b14-url",
+   "text": "github.com/P0GL0L/hermes-lineage",
+   "window": [
+    41.7,
+    46.5
+   ],
+   "readable_still_hold_s": 2.2,
+   "best_coverage": 0.94,
+   "best_read": "github.com/POGLOL/hermes-lineage",
+   "glyph_px": 31.5,
+   "run_id": "overlay",
+   "status": "ok",
+   "reasons": []
+  }
+ ],
+ "word_endings": [
+  {
+   "t": 1.48,
+   "source": "take AX-04.mov",
+   "last_word": "report.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 4.66,
+   "source": "take AX-04.mov",
+   "last_word": "exist.",
+   "lost_ms": 80,
+   "pause_after": true
+  },
+  {
+   "t": 6.65,
+   "source": "take AX-04.mov",
+   "last_word": "Labs",
+   "lost_ms": 80,
+   "pause_after": true
+  },
+  {
+   "t": 9.87,
+   "source": "take AX-04.mov",
+   "last_word": "provenance",
+   "lost_ms": 70,
+   "pause_after": true
+  },
+  {
+   "t": 10.83,
+   "source": "take AX-04.mov",
+   "last_word": "agent.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 13.57,
+   "source": "take AX-04.mov",
+   "last_word": "receipt.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 15.79,
+   "source": "voice memo AX-04",
+   "last_word": "the",
+   "lost_ms": 500,
+   "pause_after": false
+  },
+  {
+   "t": 18.27,
+   "source": "voice memo AX-04",
+   "last_word": "agent.",
+   "lost_ms": 80,
+   "pause_after": true
+  },
+  {
+   "t": 19.26,
+   "source": "take AX-04.mov",
+   "last_word": "back.",
+   "lost_ms": 50,
+   "pause_after": true
+  },
+  {
+   "t": 20.67,
+   "source": "take AX-04.mov",
+   "last_word": "call,",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 21.63,
+   "source": "take AX-04.mov",
+   "last_word": "source,",
+   "lost_ms": 50,
+   "pause_after": true
+  },
+  {
+   "t": 24.04,
+   "source": "voice memo AX-04",
+   "last_word": "timing.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 27.25,
+   "source": "take AX-04.mov",
+   "last_word": "verify.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 29.76,
+   "source": "take AX-04.mov",
+   "last_word": "source.",
+   "lost_ms": 70,
+   "pause_after": true
+  },
+  {
+   "t": 32.5,
+   "source": "take AX-04.mov",
+   "last_word": "observed,",
+   "lost_ms": 500,
+   "pause_after": false
+  },
+  {
+   "t": 33.54,
+   "source": "take AX-04.mov",
+   "last_word": "inferred.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 35.69,
+   "source": "voice memo AX-04",
+   "last_word": "confidence.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 38.27,
+   "source": "take AX-04.mov",
+   "last_word": "catalog.",
+   "lost_ms": 360,
+   "pause_after": false
+  },
+  {
+   "t": 41.58,
+   "source": "voice memo AX-04",
+   "last_word": "license.",
+   "lost_ms": 50,
+   "pause_after": true
+  },
+  {
+   "t": 44.08,
+   "source": "take AX-04.mov",
+   "last_word": "below.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 46.25,
+   "source": "take AX-04.mov",
+   "last_word": "next.",
+   "lost_ms": 0,
+   "pause_after": true
+  }
+ ],
+ "segments": [
+  {
+   "src": "take AX-04.mov",
+   "t0": 0.0,
+   "t1": 1.7,
+   "offset": 0.73
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 1.8,
+   "t1": 4.9,
+   "offset": 1.13
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 4.5,
+   "t1": 6.8,
+   "offset": 3.397
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 6.5,
+   "t1": 10.1,
+   "offset": 3.564
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 9.7,
+   "t1": 11.1,
+   "offset": 3.831
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 10.7,
+   "t1": 13.8,
+   "offset": 7.664
+  },
+  {
+   "src": "voice memo AX-04",
+   "t0": 13.4,
+   "t1": 15.4,
+   "offset": -11.603
+  },
+  {
+   "src": "voice memo AX-04",
+   "t0": 15.4,
+   "t1": 18.4,
+   "offset": -11.47
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 18.0,
+   "t1": 19.4,
+   "offset": 9.63
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 19.5,
+   "t1": 20.9,
+   "offset": 10.03
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 20.8,
+   "t1": 21.8,
+   "offset": 10.264
+  },
+  {
+   "src": "voice memo AX-04",
+   "t0": 21.7,
+   "t1": 24.3,
+   "offset": -13.103
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 23.9,
+   "t1": 27.6,
+   "offset": 13.997
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 27.2,
+   "t1": 30.0,
+   "offset": 14.73
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 29.6,
+   "t1": 32.1,
+   "offset": 17.764
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 32.1,
+   "t1": 33.8,
+   "offset": 17.93
+  },
+  {
+   "src": "voice memo AX-04",
+   "t0": 33.9,
+   "t1": 35.7,
+   "offset": -21.036
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 35.3,
+   "t1": 38.1,
+   "offset": 21.564
+  },
+  {
+   "src": "voice memo AX-04",
+   "t0": 37.9,
+   "t1": 41.7,
+   "offset": -21.536
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 41.3,
+   "t1": 44.3,
+   "offset": 23.831
+  },
+  {
+   "src": "take AX-04.mov",
+   "t0": 44.2,
+   "t1": 46.4,
+   "offset": 24.097
+  }
+ ],
+ "joins": [
+  {
+   "t": 1.75,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 4.7,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 6.65,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 9.9,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 10.9,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 13.6,
+   "kind": "source change"
+  },
+  {
+   "t": 15.4,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 18.2,
+   "kind": "source change"
+  },
+  {
+   "t": 19.45,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 20.85,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 21.75,
+   "kind": "source change"
+  },
+  {
+   "t": 24.1,
+   "kind": "source change"
+  },
+  {
+   "t": 27.4,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 29.8,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 32.1,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 33.85,
+   "kind": "source change"
+  },
+  {
+   "t": 35.5,
+   "kind": "source change"
+  },
+  {
+   "t": 38.0,
+   "kind": "source change"
+  },
+  {
+   "t": 41.5,
+   "kind": "source change"
+  },
+  {
+   "t": 44.25,
+   "kind": "cut inside one source"
+  }
+ ],
+ "cannot_check": [
+  "Whether a face looks plastic or haloed (no reliable metric; needs eyes).",
+  "Whether a voice sounds natural, warbly or pumped (needs ears or a blind A/B).",
+  "Proper nouns: both ASR models mishear them, so they are listed for a human listen, not passed or failed.",
+  "Whether the on-screen material is a real run (the gate checks the declared run id and the visible source label, not the truth of the run).",
+  "Whether a claim is true. It checks that the declared proof text is readable on screen while the claim is spoken.",
+  "Caption drawn over the face during a transition (no face/caption overlap model).",
+  "Font legibility issues such as 0 vs O.",
+  "Layout churn and pacing feel.",
+  "Anything outside the declared evidence beats: a beat the manifest forgets is not checked."
+ ]
+}

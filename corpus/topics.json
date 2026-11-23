@@ -1,0 +1,130 @@
+[
+  {
+    "num": "01",
+    "folder": "01_Scripting_and_Boards",
+    "title": "Scripting and boards",
+    "stages": [
+      "script"
+    ],
+    "summary": "How to write a short-form script and the board the performer reads from, so every line can be said in one breath, captioned in two short lines, proven on screen, and read without truncation."
+  },
+  {
+    "num": "02",
+    "folder": "02_Talking_Head_Capture",
+    "title": "Talking-head capture (camera, light, framing, mic, room)",
+    "stages": [
+      "shoot"
+    ],
+    "summary": "Capture rules for the on-camera parts: what camera, light, framing, microphone and room give footage that does not need rescue in the edit."
+  },
+  {
+    "num": "03",
+    "folder": "03_Pickups_and_Continuity",
+    "title": "Pickups and continuity",
+    "stages": [
+      "pickups"
+    ],
+    "summary": "How to record and cut in replacement lines so the viewer cannot hear or see the join: same spot, light, wardrobe, framing and mic, and how to check it on the rendered file."
+  },
+  {
+    "num": "04",
+    "folder": "04_Screen_Capture_and_Demos",
+    "title": "Screen capture and product demos",
+    "stages": [
+      "screen"
+    ],
+    "summary": "How to capture terminals, agent runs and web pages so every line on screen is real, from the run the words describe, readable at phone size, and free of personal data and plan walls."
+  },
+  {
+    "num": "05",
+    "folder": "05_Editing_and_Pacing",
+    "title": "Editing and pacing (cuts, holds, joins, endings, layout churn)",
+    "stages": [
+      "edit"
+    ],
+    "summary": "Edit rules measured on the rendered file: shot lengths, black panels, holds on evidence, word tails at cuts, gaps between sentences, endings and layout stability."
+  },
+  {
+    "num": "06",
+    "folder": "06_Captions_and_On_Screen_Text",
+    "title": "Captions and on-screen text",
+    "stages": [
+      "captions"
+    ],
+    "summary": "Captions transcribe the final audio verbatim, sit in their own band inside the platform safe area, never cover other text, and are checked by OCR against what both ASR models heard."
+  },
+  {
+    "num": "07",
+    "folder": "07_Audio",
+    "title": "Audio (cleanup, loudness, joins, room tone)",
+    "stages": [
+      "audio"
+    ],
+    "summary": "Voice cleanup that does not damage words, loudness and true peak measured on the encoded file, joins that keep room tone, and listening rules for what meters cannot judge."
+  },
+  {
+    "num": "08",
+    "folder": "08_Colour_and_Face",
+    "title": "Colour and face processing",
+    "stages": [
+      "edit"
+    ],
+    "summary": "Grade faces to match across cuts, measure it as skin dE on the rendered file, and keep face processing soft and natural rather than sharp and plastic."
+  },
+  {
+    "num": "09",
+    "folder": "09_Platform_Formats",
+    "title": "Platform formats (TikTok, Reels, YouTube Shorts, X)",
+    "stages": [
+      "publish"
+    ],
+    "summary": "What each platform documents about aspect ratio, length, safe zones and sound, what is only reported second-hand, and the AX house format that sits inside all of them."
+  },
+  {
+    "num": "10",
+    "folder": "10_Hooks_and_Retention",
+    "title": "Hooks and retention",
+    "stages": [
+      "script",
+      "edit"
+    ],
+    "summary": "What the first seconds must do, how platforms measure whether viewers stay, and the hook and pacing practice that AX used, with the honest gap that nothing on AX has been posted and measured yet."
+  },
+  {
+    "num": "11",
+    "folder": "11_Review_and_QA",
+    "title": "Review and QA (AI review limits, independent review, blind A/B, gate design)",
+    "stages": [
+      "review"
+    ],
+    "summary": "Who and what to trust for review: a gate that measures the rendered file, an independent reviewer, an AI reviewer that actually watches the video, blind A/B for audio, and the owner's own OK."
+  },
+  {
+    "num": "12",
+    "folder": "12_Claims_and_Honesty",
+    "title": "Claims and honesty",
+    "stages": [
+      "script",
+      "screen",
+      "review"
+    ],
+    "summary": "Every claim in a video is shown by real footage from the same run, sample work is labelled, ad-libs that change a claim go to the owner, and nothing is called final without evidence."
+  },
+  {
+    "num": "13",
+    "folder": "13_Anti_Patterns",
+    "title": "Anti-patterns",
+    "stages": [
+      "script",
+      "shoot",
+      "pickups",
+      "screen",
+      "edit",
+      "captions",
+      "audio",
+      "review",
+      "publish"
+    ],
+    "summary": "The named failures from the AX series in one place, each with how it shows up, the rule that prevents it and whether the gate catches it."
+  }
+]

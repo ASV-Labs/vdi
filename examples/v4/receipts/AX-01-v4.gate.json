@@ -1,0 +1,767 @@
+{
+ "id": "AX-01-v4",
+ "file": "ax:out/AX-01-edit-v4.mp4",
+ "manifest": "fixtures/AX-01-v4.manifest.json",
+ "gate_version": "0.1.0",
+ "verdict": "FAIL",
+ "ran_at": "2026-11-23 07:26:55",
+ "runtime_s": 68.59803795814514,
+ "counts": {
+  "fail": 13,
+  "warn": 1,
+  "passed": 4
+ },
+ "checks": [
+  {
+   "check": "container",
+   "status": "PASS",
+   "measured": "1080x1920 30.00 fps h264+aac 47.17 s"
+  },
+  {
+   "check": "loudness and true peak (ebur128 on the final file)",
+   "status": "PASS",
+   "measured": "-14.1 LUFS integrated, true peak -1.9 dBTP"
+  },
+  {
+   "check": "shot lengths (scene detection per region, < 12 frames fails)",
+   "status": "FAIL",
+   "measured": "12 hard changes (whole frame); shortest-shot violations: 2",
+   "detail": [
+    "2-frame shot at 4.30 s (whole)",
+    "6-frame shot at 36.37 s (upper half)"
+   ],
+   "defect_class": "flash shots"
+  },
+  {
+   "check": "black or blank panels (> 1 frame between content fails)",
+   "status": "FAIL",
+   "measured": "1 short black-panel runs, 0 long ones",
+   "detail": [
+    "41% of the frame height went black for 2 frames at 20.07-20.13 s"
+   ],
+   "defect_class": "black panel before a screen"
+  },
+  {
+   "check": "face continuity (skin dE < 3.5 across cuts)",
+   "status": "FAIL",
+   "measured": "13 face-to-face boundaries measured, largest dE 4.1",
+   "detail": [
+    "42.97 s: skin dE 4.1 (L 38->42, b 9->8)"
+   ],
+   "defect_class": "pickup grade mismatch"
+  },
+  {
+   "check": "word endings against the source envelopes (full band and >= 3.5 kHz)",
+   "status": "FAIL",
+   "measured": "21 segment ends compared; 6 lost tails before a pause",
+   "detail": [
+    "20.59 s 'Guidance,': source speech runs 110 ms past the point the final stops reproducing it (voice memo AX-01)",
+    "21.89 s 'templates,': source speech runs 140 ms past the point the final stops reproducing it (voice memo AX-01)",
+    "28.49 s 'English.': source speech runs 100 ms past the point the final stops reproducing it (voice memo AX-01)",
+    "37.72 s 'Motif.': source speech runs 160 ms past the point the final stops reproducing it (take AX-01.mov)",
+    "44.91 s 'Labs.': source speech runs 60 ms past the point the final stops reproducing it (voice memo AX-01)",
+    "47.00 s 'plant.': source speech runs 300 ms past the point the final stops reproducing it (voice memo AX-01)",
+    "WARN 17.04 s 'a': source speech runs 500 ms past the point the final stops reproducing it (take AX-01.mov); the source does not pause right after, so this may be a deliberate mid-phrase cut"
+   ],
+   "defect_class": "cut word endings"
+  },
+  {
+   "check": "ending hold after the last word",
+   "status": "FAIL",
+   "measured": "hold 0.09 s after the last sound at 47.08 s",
+   "detail": [
+    "last sound ends 0.09 s before the file ends (needs 0.6-1.0 s)"
+   ],
+   "defect_class": "abrupt ending"
+  },
+  {
+   "check": "inter-sentence gaps (>= 0.12 s below speech -25 dB)",
+   "status": "FAIL",
+   "measured": "17 sentence boundaries, 2 rushed",
+   "detail": [
+    "22.96 s 'checks.' -> 'Connect': longest pause 70 ms",
+    "28.42 s 'English.' -> 'Then': longest pause 80 ms"
+   ],
+   "defect_class": "rushed joins"
+  },
+  {
+   "check": "1 s speech-level step across joins (< 2.0 dB)",
+   "status": "FAIL",
+   "measured": "20 joins measured, largest step 2.6 dB",
+   "detail": [
+    "4.20 s (cut inside one source): +2.6 dB",
+    "9.00 s (cut inside one source): +2.1 dB"
+   ],
+   "defect_class": "level steps at joins"
+  },
+  {
+   "check": "room tone through joins (no digital-zero dropouts)",
+   "status": "FAIL",
+   "measured": "4 zero runs > 1.0 ms",
+   "detail": [
+    "12.86 s: 7 ms of digital zero",
+    "34.27 s: 4 ms of digital zero",
+    "43.56 s: 2 ms of digital zero",
+    "45.03 s: 5 ms of digital zero"
+   ],
+   "defect_class": "dropouts at joins"
+  },
+  {
+   "check": "spoken words vs script (differences must be on the owner-accepted list)",
+   "status": "FAIL",
+   "measured": "9 unaccepted differences; 3 spots where the two ASR models disagree",
+   "detail": [
+    "~5.7 s script 'i build' not confirmed: the models disagree (small.en 'I've built' / medium.en 'I build')",
+    "~14.1 s script '-' / heard by both models 'and'",
+    "~15.3 s script 'right now' / heard by both models '-'",
+    "~19.9 s script 'guidance' not confirmed: the models disagree (small.en 'Guinets.' / medium.en 'Guidance,')",
+    "~26.4 s script 'code' / heard by both models '-'",
+    "~27.5 s script 'in plain' / heard by both models 'and play'",
+    "~28.4 s script 'it builds' / heard by both models '-'",
+    "~29.9 s script 'contrast' / heard by both models 'contrasts'",
+    "~46.6 s script 'faceplants' not confirmed: the models disagree (small.en 'faceplate.' / medium.en 'face plant.')",
+    "INFO models disagree: 6.2 s small.en 'I've built' vs medium.en 'I build'",
+    "INFO models disagree: 20.2 s small.en 'Guinets.' vs medium.en 'Guidance,'",
+    "INFO models disagree: 46.7 s small.en 'faceplate.' vs medium.en 'face plant.'"
+   ],
+   "defect_class": "unaccepted script deviations / misheard words"
+  },
+  {
+   "check": "captions match the final audio (OCR of frames vs transcript; both ASR models must agree)",
+   "status": "FAIL",
+   "measured": "53 caption events read; 0 words not heard, 4 heard by one model only, 0 proper nouns to check by ear",
+   "detail": [
+    "6.1 s caption 'I've built': 'ive' heard by only one ASR model",
+    "6.1 s caption 'I've built': 'buiit' heard by only one ASR model",
+    "20.2 s caption 'Guidance': 'guidance' heard by only one ASR model",
+    "46.6 s caption 'faceplants': 'facepiants' heard by only one ASR model"
+   ],
+   "defect_class": "caption text differs from speech"
+  },
+  {
+   "check": "caption timing (onset within 0.35 s of the word; WARN only: OCR of animated captions is +-0.2 s)",
+   "status": "WARN",
+   "measured": "1 late/early caption events",
+   "detail": [
+    "20.00 s 'MCP.' appears 0.76 s after the word"
+   ],
+   "defect_class": "late captions"
+  },
+  {
+   "check": "caption safe area (top 8%, bottom 20%, right 12% clear)",
+   "status": "PASS",
+   "measured": "0 events outside",
+   "defect_class": "captions in platform UI"
+  },
+  {
+   "check": "caption clearance from other on-screen text (>= 48 px)",
+   "status": "FAIL",
+   "measured": "13 caption events crowd other text",
+   "detail": [
+    "16.8-17.7 s caption 'a design library': 'Try Motif free for 7 days. No card requi' within 48 px of the caption",
+    "17.8-19.1 s caption 'that calls over': 'Try Motif free for 7 days. No card requi' within 48 px of the caption",
+    "19.2-19.7 s caption 'MCP.': 'Trv Motif free for 7 davs. No card' within 48 px of the caption",
+    "20.2-20.7 s caption 'Guidance': 'checks) and reads vour' within 48 px of the caption",
+    "21.2-22.1 s caption 'tested templates': 'checks) and reads vour proiect's brief a' within 48 px of the caption",
+    "22.2-23.0 s caption 'design checks.': 'brief and' within 48 px of the caption",
+    "30.8-31.0 s caption 'Contrast': 'PASS mobile-hero-hvtes: A KR is within t' within 48 px of the caption",
+    "31.1-32.0 s caption 'touch targets': 'PASS mobile-hern-hvtes: KR is within the' within 48 px of the caption",
+    "32.1-32.8 s caption 'line length.': 'PASS mobile-hern-hvtes: KR is within the' within 48 px of the caption",
+    "32.9-34.3 s caption 'Fixes what fails.': 'PASS mobile-hern-hvtes: KR is within the' within 48 px of the caption",
+    "35.4-36.2 s caption 'was built by': 'northern cc' within 48 px of the caption",
+    "45.7-46.5 s caption 'wins and the': 'Website' within 48 px of the caption",
+    "46.6-47.1 s caption 'faceplants': 'bsit' under the caption"
+   ],
+   "defect_class": "captions over screen text"
+  },
+  {
+   "check": "evidence lines (whole line in frame, still, >= 28 px, >= 1.6 s)",
+   "status": "FAIL",
+   "measured": "10 beats, 8 failing",
+   "detail": [
+    "b01-now-open [12.9-15.4 s] 'NOW OPEN': still+readable 0.0 s (needs 1.6); glyph height 17 px < 28; glyph height 18 px < 28; glyph height 19 px < 28; line incomplete in frame (best read 'A design library your coding agent can call.'); line outside the safe area (y 77-96); line outside the safe area (y 78-95); line outside the safe area (y 78-96); line touches the frame edg",
+    "b02-templates [20.1-23.0 s] 'templates': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read 'CLI, VS Code or any client that supports remote MCP: sign in'); line incomplete in frame (best read 'Enter MCP server https://mcp.asv-'); line incomplete in frame (best read 'Motif is a standard remote MCP server. Create a free accoun '); line incomplete in frame",
+    "b04-email-code [25.4-26.6 s] 'Enter your code': still+readable 0.5 s (needs 1.6); line incomplete in frame (best read 'Enter MCP server URL https://mcp.asv-labs.com/mcp'); line incomplete in frame (best read 'We'll email you a 6-digit code. New step creates your free a'); line moves while read",
+    "b05-prompt [26.5-28.3 s] 'opencode run \"Build the pricing page': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read '~/pricing $ opencode run \"Design the ['); line incomplete in frame (best read '~/pricing $ opencode run \"Design the f')",
+    "b06-contrast [28.2-30.6 s] 'PASS contrast-text-aa: Contrast 12.92:1': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read 'PASS contrast-text-aa: Cont PASS touch-target-h Check the wo'); line touches the frame edge",
+    "b07-target [30.6-32.3 s] 'PASS target-size-aa': still+readable 0.0 s (needs 1.6); line touches the frame edge",
+    "b08-measure-fail [31.8-33.5 s] 'FAIL measure-max: 66ch is over 65ch': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read 'FAIL measure-max: 66ch is \u00a2 se 60ch.'); line touches the frame edge",
+    "b10-endcard-url [43.6-47.1 s] 'motif.asv-labs.com': still+readable 0.8 s (needs 1.6); line incomplete in frame (best read 'Motif gives it taste. A maintained design library your codin'); line incomplete in frame (best read 'O Motif asv Labs'); line incomplete in frame (best read 'mot tif: asv-labs i free i for 7'); line incomplete in frame (best read 'motif.asv-labs Try free for 7 da"
+   ],
+   "defect_class": "cropped / moving / unreadable evidence"
+  },
+  {
+   "check": "run ids and source labels (one claim = one run, or a visible label)",
+   "status": "PASS",
+   "measured": "5 checks",
+   "defect_class": "mixed runs presented as one"
+  },
+  {
+   "check": "PII and plan-wall sweep (OCR of every sampled frame)",
+   "status": "FAIL",
+   "measured": "1 findings",
+   "detail": [
+    "email '[email redacted, 18 chars]' at 25.7-26.4 s (7 frames)"
+   ],
+   "defect_class": "personal data / plan walls on screen"
+  }
+ ],
+ "evidence": [
+  {
+   "id": "b01-now-open",
+   "text": "NOW OPEN",
+   "window": [
+    12.9,
+    15.4
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "e NOW OPEN",
+   "glyph_px": 17.0,
+   "run_id": "capture-asv-labs-home",
+   "status": "FAIL",
+   "reasons": [
+    "glyph height 17 px < 28",
+    "glyph height 18 px < 28",
+    "glyph height 19 px < 28",
+    "line incomplete in frame (best read 'A design library your coding agent can call.')",
+    "line outside the safe area (y 77-96)",
+    "line outside the safe area (y 78-95)",
+    "line outside the safe area (y 78-96)",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b02-templates",
+   "text": "templates",
+   "window": [
+    20.1,
+    23.0
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 0.89,
+   "best_read": "Step 2 - Ask in plain language Trv Motif free for 7 davs. Nc Get the right sui",
+   "glyph_px": null,
+   "run_id": "capture-motif-home",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'CLI, VS Code or any client that supports remote MCP: sign in')",
+    "line incomplete in frame (best read 'Enter MCP server https://mcp.asv-')",
+    "line incomplete in frame (best read 'Motif is a standard remote MCP server. Create a free accoun ')",
+    "line incomplete in frame (best read 'Step 2 - Ask in plain language Trv Motif free for 7 davs. Nc')"
+   ]
+  },
+  {
+   "id": "b03-mcp-add",
+   "text": "opencode mcp add",
+   "window": [
+    23.0,
+    25.4
+   ],
+   "readable_still_hold_s": 2.3,
+   "best_coverage": 1.0,
+   "best_read": "~/booking $ opencode mcp add",
+   "glyph_px": 30.0,
+   "run_id": "ax01-connect",
+   "status": "ok",
+   "reasons": []
+  },
+  {
+   "id": "b04-email-code",
+   "text": "Enter your code",
+   "window": [
+    25.4,
+    26.6
+   ],
+   "readable_still_hold_s": 0.5,
+   "best_coverage": 1.0,
+   "best_read": "Enter your code",
+   "glyph_px": 58.5,
+   "run_id": "ax01-connect",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'Enter MCP server URL https://mcp.asv-labs.com/mcp')",
+    "line incomplete in frame (best read 'We'll email you a 6-digit code. New step creates your free a')",
+    "line moves while read"
+   ]
+  },
+  {
+   "id": "b05-prompt",
+   "text": "opencode run \"Build the pricing page",
+   "window": [
+    26.5,
+    28.3
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 0.56,
+   "best_read": "~/pricing $ opencode run \"Design the [",
+   "glyph_px": null,
+   "run_id": "ax01b",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read '~/pricing $ opencode run \"Design the [')",
+    "line incomplete in frame (best read '~/pricing $ opencode run \"Design the f')"
+   ]
+  },
+  {
+   "id": "b06-contrast",
+   "text": "PASS contrast-text-aa: Contrast 12.92:1",
+   "window": [
+    28.2,
+    30.6
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "PASS contrast-text-aa: Contrast 12.92:1 (",
+   "glyph_px": 29.0,
+   "run_id": "ax01b",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'PASS contrast-text-aa: Cont PASS touch-target-h Check the wo')",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b07-target",
+   "text": "PASS target-size-aa",
+   "window": [
+    30.6,
+    32.3
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "$ cat motif-contrast.txt PASS target-size-aa",
+   "glyph_px": 28.0,
+   "run_id": "ax01b",
+   "status": "FAIL",
+   "reasons": [
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b08-measure-fail",
+   "text": "FAIL measure-max: 66ch is over 65ch",
+   "window": [
+    31.8,
+    33.5
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "FAIL measure-max: 66ch is over 65ch; in a propo",
+   "glyph_px": 29.0,
+   "run_id": "ax01b",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'FAIL measure-max: 66ch is \u00a2 se 60ch.')",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b09-measure-pass",
+   "text": "PASS measure-max: 60ch is within 45",
+   "window": [
+    33.5,
+    35.4
+   ],
+   "readable_still_hold_s": 1.7,
+   "best_coverage": 1.0,
+   "best_read": "P PASS measure-max: 60ch is within 45-65ch.",
+   "glyph_px": 29.0,
+   "run_id": "ax01b",
+   "status": "ok",
+   "reasons": []
+  },
+  {
+   "id": "b10-endcard-url",
+   "text": "motif.asv-labs.com",
+   "window": [
+    43.6,
+    47.1
+   ],
+   "readable_still_hold_s": 0.8,
+   "best_coverage": 1.0,
+   "best_read": "motif.asv-labs.com",
+   "glyph_px": 46.0,
+   "run_id": "capture-motif-home",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'Motif gives it taste. A maintained design library your codin')",
+    "line incomplete in frame (best read 'O Motif asv Labs')",
+    "line incomplete in frame (best read 'mot tif: asv-labs i free i for 7')",
+    "line incomplete in frame (best read 'motif.asv-labs Try free for 7 days -')",
+    "line incomplete in frame (best read 'tif.asv-labs.com')",
+    "line moves while read"
+   ]
+  }
+ ],
+ "word_endings": [
+  {
+   "t": 4.09,
+   "source": "take AX-01.mov",
+   "last_word": "ugly.",
+   "lost_ms": 30,
+   "pause_after": true
+  },
+  {
+   "t": 8.91,
+   "source": "take AX-01.mov",
+   "last_word": "public.",
+   "lost_ms": 30,
+   "pause_after": true
+  },
+  {
+   "t": 10.83,
+   "source": "take AX-01.mov",
+   "last_word": "Labs,",
+   "lost_ms": 50,
+   "pause_after": true
+  },
+  {
+   "t": 12.66,
+   "source": "take AX-01.mov",
+   "last_word": "intent.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 15.27,
+   "source": "take AX-01.mov",
+   "last_word": "open.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 17.04,
+   "source": "take AX-01.mov",
+   "last_word": "a",
+   "lost_ms": 500,
+   "pause_after": false
+  },
+  {
+   "t": 19.92,
+   "source": "take AX-01.mov",
+   "last_word": "MCP.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 20.59,
+   "source": "voice memo AX-01",
+   "last_word": "Guidance,",
+   "lost_ms": 110,
+   "pause_after": true
+  },
+  {
+   "t": 21.89,
+   "source": "voice memo AX-01",
+   "last_word": "templates,",
+   "lost_ms": 140,
+   "pause_after": true
+  },
+  {
+   "t": 23.01,
+   "source": "voice memo AX-01",
+   "last_word": "checks.",
+   "lost_ms": 40,
+   "pause_after": true
+  },
+  {
+   "t": 24.01,
+   "source": "take AX-01.mov",
+   "last_word": "once.",
+   "lost_ms": 50,
+   "pause_after": true
+  },
+  {
+   "t": 26.44,
+   "source": "take AX-01.mov",
+   "last_word": "email,",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 28.49,
+   "source": "voice memo AX-01",
+   "last_word": "English.",
+   "lost_ms": 100,
+   "pause_after": true
+  },
+  {
+   "t": 29.85,
+   "source": "take AX-01.mov",
+   "last_word": "work.",
+   "lost_ms": 20,
+   "pause_after": true
+  },
+  {
+   "t": 32.72,
+   "source": "take AX-01.mov",
+   "last_word": "length,",
+   "lost_ms": 40,
+   "pause_after": true
+  },
+  {
+   "t": 34.08,
+   "source": "voice memo AX-01",
+   "last_word": "fails.",
+   "lost_ms": 30,
+   "pause_after": true
+  },
+  {
+   "t": 37.72,
+   "source": "take AX-01.mov",
+   "last_word": "Motif.",
+   "lost_ms": 160,
+   "pause_after": true
+  },
+  {
+   "t": 40.19,
+   "source": "voice memo AX-01",
+   "last_word": "real.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 43.36,
+   "source": "take AX-01.mov",
+   "last_word": "caption.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 44.91,
+   "source": "voice memo AX-01",
+   "last_word": "Labs.",
+   "lost_ms": 60,
+   "pause_after": true
+  },
+  {
+   "t": 47.0,
+   "source": "voice memo AX-01",
+   "last_word": "plant.",
+   "lost_ms": 300,
+   "pause_after": true
+  }
+ ],
+ "segments": [
+  {
+   "src": "take AX-01.mov",
+   "t0": 0.0,
+   "t1": 4.4,
+   "offset": 0.93
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 4.0,
+   "t1": 9.0,
+   "offset": 2.93
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 9.0,
+   "t1": 11.0,
+   "offset": 3.364
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 10.6,
+   "t1": 12.9,
+   "offset": 5.83
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 12.9,
+   "t1": 15.6,
+   "offset": 6.197
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 15.2,
+   "t1": 16.6,
+   "offset": 8.564
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 16.7,
+   "t1": 20.1,
+   "offset": 8.697
+  },
+  {
+   "src": "voice memo AX-01",
+   "t0": 19.7,
+   "t1": 20.8,
+   "offset": -17.036
+  },
+  {
+   "src": "voice memo AX-01",
+   "t0": 20.5,
+   "t1": 22.1,
+   "offset": -16.67
+  },
+  {
+   "src": "voice memo AX-01",
+   "t0": 21.8,
+   "t1": 23.1,
+   "offset": -16.336
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 22.7,
+   "t1": 24.2,
+   "offset": 9.364
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 24.2,
+   "t1": 26.7,
+   "offset": 9.564
+  },
+  {
+   "src": "voice memo AX-01",
+   "t0": 26.3,
+   "t1": 28.6,
+   "offset": -16.87
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 28.2,
+   "t1": 30.0,
+   "offset": 13.197
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 29.8,
+   "t1": 33.0,
+   "offset": 13.564
+  },
+  {
+   "src": "voice memo AX-01",
+   "t0": 32.6,
+   "t1": 34.3,
+   "offset": -18.936
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 34.1,
+   "t1": 38.0,
+   "offset": 15.33
+  },
+  {
+   "src": "voice memo AX-01",
+   "t0": 37.8,
+   "t1": 40.5,
+   "offset": -20.736
+  },
+  {
+   "src": "take AX-01.mov",
+   "t0": 40.1,
+   "t1": 43.6,
+   "offset": 17.864
+  },
+  {
+   "src": "voice memo AX-01",
+   "t0": 43.2,
+   "t1": 45.1,
+   "offset": -21.736
+  },
+  {
+   "src": "voice memo AX-01",
+   "t0": 45.0,
+   "t1": 47.1,
+   "offset": -21.47
+  }
+ ],
+ "joins": [
+  {
+   "t": 4.2,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 9.0,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 10.8,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 12.9,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 15.4,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 16.65,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 19.9,
+   "kind": "source change"
+  },
+  {
+   "t": 20.65,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 21.95,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 22.9,
+   "kind": "source change"
+  },
+  {
+   "t": 24.2,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 26.5,
+   "kind": "source change"
+  },
+  {
+   "t": 28.4,
+   "kind": "source change"
+  },
+  {
+   "t": 29.9,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 32.8,
+   "kind": "source change"
+  },
+  {
+   "t": 34.2,
+   "kind": "source change"
+  },
+  {
+   "t": 37.9,
+   "kind": "source change"
+  },
+  {
+   "t": 40.3,
+   "kind": "source change"
+  },
+  {
+   "t": 43.4,
+   "kind": "source change"
+  },
+  {
+   "t": 45.05,
+   "kind": "cut inside one source"
+  }
+ ],
+ "cannot_check": [
+  "Whether a face looks plastic or haloed (no reliable metric; needs eyes).",
+  "Whether a voice sounds natural, warbly or pumped (needs ears or a blind A/B).",
+  "Proper nouns: both ASR models mishear them, so they are listed for a human listen, not passed or failed.",
+  "Whether the on-screen material is a real run (the gate checks the declared run id and the visible source label, not the truth of the run).",
+  "Whether a claim is true. It checks that the declared proof text is readable on screen while the claim is spoken.",
+  "Caption drawn over the face during a transition (no face/caption overlap model).",
+  "Font legibility issues such as 0 vs O.",
+  "Layout churn and pacing feel.",
+  "Anything outside the declared evidence beats: a beat the manifest forgets is not checked."
+ ]
+}

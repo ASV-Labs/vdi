@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vdi"
+version = "0.1.0"
+description = "Video Design Intelligence: render gates, a sourced corpus and an MCP server for honest, finished short-form product videos. Code MIT; corpus/ CC BY 4.0."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE", "corpus/LICENSE"]
+requires-python = ">=3.10"
+authors = [{ name = "ASV Labs" }]
+keywords = ["video", "short-form", "quality gate", "mcp", "loudness", "ocr", "agents"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: MacOS",
+  "Operating System :: POSIX :: Linux",
+  "Topic :: Multimedia :: Video",
+]
+dependencies = [
+  "PyYAML>=6",
+  "numpy>=1.24",
+  "Pillow>=10.1",
+  "pytesseract>=0.3.10",
+  "scikit-image>=0.22",
+]
+
+[project.optional-dependencies]
+release = ["faster-whisper>=1.0", "opencv-python-headless>=4.8", "scipy>=1.10"]
+mcp = ["mcp>=1.2", "pydantic>=2.6"]
+dev = ["pytest>=8"]
+all = ["vdi[release,mcp,dev]"]
+
+[project.scripts]
+vdi = "vdi.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/ASV-Labs/vdi"
+
+[tool.setuptools]
+packages = ["vdi", "vdi.selftest"]
+
+[tool.setuptools.package-data]
+vdi = ["data/*.yaml", "release_data/*.json"]

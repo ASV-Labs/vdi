@@ -1,0 +1,283 @@
+{
+ "about": "Guidance evals for the VDI MCP engine. Each question is answered by calling the tool an agent would call; it passes if the expected guidance is in the result (expected rule ids in the top results, and/or expected phrases). Written 2026-11-23 from the AX lessons; deterministic, no API key.",
+ "cases": [
+  {
+   "id": "Q01",
+   "question": "My last word keeps getting clipped at the end of a pickup. What rule and check apply?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "word endings consonant fade high-passed envelope",
+    "limit": 8
+   },
+   "expect_ids_any": [
+    "VDI-05-R06",
+    "VDI-07-R06"
+   ],
+   "expect_phrases": [
+    "3.5 kHz"
+   ]
+  },
+  {
+   "id": "Q02",
+   "question": "How long should the short hold after the last word?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "ending hold after last word",
+    "limit": 8
+   },
+   "expect_ids_any": [
+    "VDI-05-R07"
+   ],
+   "expect_phrases": [
+    "0.6-0.8 s"
+   ]
+  },
+  {
+   "id": "Q03",
+   "question": "Can I show the prompt from one agent run and the result from another in the same claim?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "run id claim source label adjacent beats",
+    "limit": 8
+   },
+   "expect_ids_any": [
+    "VDI-04-R02",
+    "VDI-04-R08",
+    "VDI-12-R03"
+   ],
+   "expect_phrases": [
+    "source label"
+   ]
+  },
+  {
+   "id": "Q04",
+   "question": "Should captions follow the script or the audio?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "caption verbatim audio script",
+    "stage": "captions",
+    "limit": 8
+   },
+   "expect_ids_any": [
+    "VDI-06-R01"
+   ],
+   "expect_phrases": [
+    "verbatim"
+   ]
+  },
+  {
+   "id": "Q05",
+   "question": "How do I record a terminal so lines are not cropped?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "terminal columns narrow font cropped",
+    "limit": 8
+   },
+   "expect_ids_any": [
+    "VDI-04-R03"
+   ],
+   "expect_phrases": [
+    "38-40 columns",
+    "39 px"
+   ]
+  },
+  {
+   "id": "Q06",
+   "question": "Is the Gemini web app a valid video reviewer?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "Gemini web app transcripts AI Studio review",
+    "limit": 8
+   },
+   "expect_phrases": [
+    "AI Studio",
+    "transcripts"
+   ],
+   "note": "Phrase-based: the answer comes back from lesson 5.1 and the topic-11 principle (top results); the rule line VDI-11-R05 ranks lower for this wording."
+  },
+  {
+   "id": "Q07",
+   "question": "What skin colour difference is allowed at a cut between a take and a pickup?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "skin dE pickup cut",
+    "limit": 8
+   },
+   "expect_ids_any": [
+    "VDI-03-R01",
+    "VDI-08-R01"
+   ],
+   "expect_phrases": [
+    "3.5"
+   ]
+  },
+  {
+   "id": "Q08",
+   "question": "What is the shortest allowed shot?",
+   "tool": "vdi_get",
+   "args": {
+    "id": "VDI-05-R01"
+   },
+   "expect_phrases": [
+    "12 frames"
+   ]
+  },
+  {
+   "id": "Q09",
+   "question": "What must be true before a video is called final?",
+   "tool": "vdi_checklist",
+   "args": {
+    "stage": "review"
+   },
+   "expect_ids_any": [
+    "VDI-11-R01"
+   ],
+   "expect_phrases": [
+    "owner"
+   ]
+  },
+  {
+   "id": "Q10",
+   "question": "Brief for a 90 s YouTube Short explainer with no presenter: any platform warning?",
+   "tool": "vdi_brief",
+   "args": {
+    "video_type": "explainer",
+    "platform": "shorts",
+    "duration_s": 90,
+    "has_talking_head": false,
+    "has_screen_demo": false
+   },
+   "expect_phrases": [
+    "blocked globally",
+    "outside the house window"
+   ]
+  },
+  {
+   "id": "Q11",
+   "question": "Brief for a 45 s product demo with presenter: does it include capture, pickup and screen rules and an ending hold?",
+   "tool": "vdi_brief",
+   "args": {
+    "video_type": "product-demo",
+    "platform": "all",
+    "duration_s": 45,
+    "has_talking_head": true,
+    "has_screen_demo": true
+   },
+   "expect_ids_any": [
+    "VDI-02-R01",
+    "VDI-03-R01",
+    "VDI-04-R01"
+   ],
+   "expect_phrases": [
+    "ending hold",
+    "manifest_template"
+   ]
+  },
+  {
+   "id": "Q12",
+   "question": "Lint: does a 24-word claim sentence get flagged with the claim and the proper nouns?",
+   "tool": "vdi_lint_script",
+   "args": {
+    "text": "This studio site was built by an agent following Motif, and it was reviewed and merged by Nous Research under the MIT license last week."
+   },
+   "expect_phrases": [
+    "over 20 words",
+    "needs an on-screen proof",
+    "Nous",
+    "MIT"
+   ]
+  },
+  {
+   "id": "Q13",
+   "question": "Lint: a SAY beat over 70 characters fails the board rule",
+   "tool": "vdi_lint_script",
+   "args": {
+    "text": "Connect it once. One command, sign in with an email code. Then just ask in plain English and watch what it does."
+   },
+   "expect_phrases": [
+    "over 70 characters",
+    "split into 4a/4b/4c",
+    "\"passes\": false"
+   ]
+  },
+  {
+   "id": "Q14",
+   "question": "What loudness target and true peak does the gate use, and does YouTube turn quiet videos up?",
+   "tool": "vdi_checklist",
+   "args": {
+    "stage": "audio"
+   },
+   "expect_ids_any": [
+    "VDI-07-R02"
+   ],
+   "expect_phrases": [
+    "-14 LUFS",
+    "does not turn quiet"
+   ]
+  },
+  {
+   "id": "Q15",
+   "question": "What can the gate NOT check?",
+   "tool": "vdi_gate_spec",
+   "args": {},
+   "expect_phrases": [
+    "plastic",
+    "truth",
+    "manifest"
+   ]
+  },
+  {
+   "id": "Q16",
+   "question": "What does Meta say about sound on Reels?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "Reels sound on 75%",
+    "limit": 8
+   },
+   "expect_phrases": [
+    "75%"
+   ]
+  },
+  {
+   "id": "Q17",
+   "question": "Masked emails and PLAN_REQUIRED on screen: what is the rule?",
+   "tool": "vdi_checklist",
+   "args": {
+    "stage": "screen"
+   },
+   "expect_ids_any": [
+    "VDI-04-R07",
+    "VDI-04-R08"
+   ],
+   "expect_phrases": [
+    "PII"
+   ]
+  },
+  {
+   "id": "Q18",
+   "question": "Is a tolerance list of misheard words allowed in the gate?",
+   "tool": "vdi_search",
+   "args": {
+    "query": "tolerance list misheard ASR both models agree",
+    "limit": 8
+   },
+   "expect_ids_any": [
+    "VDI-11-R03"
+   ],
+   "expect_phrases": [
+    "both"
+   ]
+  },
+  {
+   "id": "Q19",
+   "question": "Lint: a beat of 70 characters or less passes the board rule",
+   "tool": "vdi_lint_script",
+   "args": {
+    "text": "Connect it once.\nOne command, sign in with an email code.\nThen just ask in plain English."
+   },
+   "expect_phrases": [
+    "\"passes\": true"
+   ]
+  }
+ ]
+}

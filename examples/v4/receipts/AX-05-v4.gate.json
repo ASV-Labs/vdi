@@ -1,0 +1,757 @@
+{
+ "id": "AX-05-v4",
+ "file": "ax:out/AX-05-edit-v4.mp4",
+ "manifest": "fixtures/AX-05-v4.manifest.json",
+ "gate_version": "0.1.0",
+ "verdict": "FAIL",
+ "ran_at": "2026-11-23 07:31:18",
+ "runtime_s": 44.39090633392334,
+ "counts": {
+  "fail": 9,
+  "warn": 1,
+  "passed": 8
+ },
+ "checks": [
+  {
+   "check": "container",
+   "status": "PASS",
+   "measured": "1080x1920 30.00 fps h264+aac 45.93 s"
+  },
+  {
+   "check": "loudness and true peak (ebur128 on the final file)",
+   "status": "PASS",
+   "measured": "-14.1 LUFS integrated, true peak -1.7 dBTP"
+  },
+  {
+   "check": "shot lengths (scene detection per region, < 12 frames fails)",
+   "status": "FAIL",
+   "measured": "12 hard changes (whole frame); shortest-shot violations: 6",
+   "detail": [
+    "2-frame shot at 13.27 s (lower half)",
+    "2-frame shot at 19.87 s (upper half)",
+    "8-frame shot at 28.27 s (lower half)",
+    "5-frame shot at 28.37 s (whole)",
+    "3-frame shot at 39.53 s (lower half)",
+    "8-frame shot at 41.90 s (whole)"
+   ],
+   "defect_class": "flash shots"
+  },
+  {
+   "check": "black or blank panels (> 1 frame between content fails)",
+   "status": "PASS",
+   "measured": "0 short black-panel runs, 0 long ones",
+   "defect_class": "black panel before a screen"
+  },
+  {
+   "check": "face continuity (skin dE < 3.5 across cuts)",
+   "status": "PASS",
+   "measured": "27 face-to-face boundaries measured, largest dE 3.3",
+   "defect_class": "pickup grade mismatch"
+  },
+  {
+   "check": "word endings against the source envelopes (full band and >= 3.5 kHz)",
+   "status": "FAIL",
+   "measured": "21 segment ends compared; 6 lost tails before a pause",
+   "detail": [
+    "8.36 s 'exist.': source speech runs 100 ms past the point the final stops reproducing it (take AX-05.mov)",
+    "12.02 s 'builds,': source speech runs 70 ms past the point the final stops reproducing it (take AX-05.mov)",
+    "20.05 s 'contract,': source speech runs 220 ms past the point the final stops reproducing it (take AX-05.mov)",
+    "33.68 s 'pass.': source speech runs 210 ms past the point the final stops reproducing it (on-camera pickup AX-05_Update.mov)",
+    "40.14 s 'Motif,': source speech runs 160 ms past the point the final stops reproducing it (take AX-05.mov)",
+    "45.44 s 'today.': source speech runs 100 ms past the point the final stops reproducing it (take AX-05.mov)"
+   ],
+   "defect_class": "cut word endings"
+  },
+  {
+   "check": "ending hold after the last word",
+   "status": "FAIL",
+   "measured": "hold 0.17 s after the last sound at 45.76 s",
+   "detail": [
+    "last sound ends 0.17 s before the file ends (needs 0.6-1.0 s)"
+   ],
+   "defect_class": "abrupt ending"
+  },
+  {
+   "check": "inter-sentence gaps (>= 0.12 s below speech -25 dB)",
+   "status": "FAIL",
+   "measured": "11 sentence boundaries, 2 rushed",
+   "detail": [
+    "28.38 s 'needs.' -> 'And': longest pause 50 ms",
+    "33.70 s 'pass.' -> 'It': longest pause 90 ms"
+   ],
+   "defect_class": "rushed joins"
+  },
+  {
+   "check": "1 s speech-level step across joins (< 2.0 dB)",
+   "status": "FAIL",
+   "measured": "20 joins measured, largest step 2.3 dB",
+   "detail": [
+    "17.90 s (source change): +2.1 dB",
+    "43.60 s (cut inside one source): +2.3 dB"
+   ],
+   "defect_class": "level steps at joins"
+  },
+  {
+   "check": "room tone through joins (no digital-zero dropouts)",
+   "status": "FAIL",
+   "measured": "10 zero runs > 1.0 ms",
+   "detail": [
+    "3.33 s: 6 ms of digital zero",
+    "10.20 s: 4 ms of digital zero",
+    "15.83 s: 9 ms of digital zero",
+    "17.80 s: 5 ms of digital zero",
+    "24.09 s: 8 ms of digital zero",
+    "25.00 s: 4 ms of digital zero",
+    "27.37 s: 3 ms of digital zero",
+    "36.49 s: 7 ms of digital zero",
+    "39.53 s: 4 ms of digital zero",
+    "41.90 s: 6 ms of digital zero"
+   ],
+   "defect_class": "dropouts at joins"
+  },
+  {
+   "check": "spoken words vs script (differences must be on the owner-accepted list)",
+   "status": "FAIL",
+   "measured": "6 unaccepted differences; 0 spots where the two ASR models disagree",
+   "detail": [
+    "~1.1 s script '-' / heard by both models 'but'",
+    "~3.2 s script '-' / heard by both models 'i told my agent i need a'",
+    "~11.0 s script 'with motif before you finish' / heard by both models '-'",
+    "~13.2 s script 'too thats' / heard by both models '-'",
+    "~14.3 s script '-' / heard by both models 'is it really isnt fine'",
+    "~32.6 s script 'never' / heard by both models 'not'"
+   ],
+   "defect_class": "unaccepted script deviations / misheard words"
+  },
+  {
+   "check": "captions match the final audio (OCR of frames vs transcript; both ASR models must agree)",
+   "status": "PASS",
+   "measured": "52 caption events read; 0 words not heard, 0 heard by one model only, 0 proper nouns to check by ear",
+   "defect_class": "caption text differs from speech"
+  },
+  {
+   "check": "caption timing (onset within 0.35 s of the word; WARN only: OCR of animated captions is +-0.2 s)",
+   "status": "WARN",
+   "measured": "3 late/early caption events",
+   "detail": [
+    "14.00 s 'The problem is' appears 0.37 s after the word",
+    "15.10 s 'it really isn't' appears 0.56 s after the word",
+    "17.70 s 'a measurement.' appears 0.66 s after the word"
+   ],
+   "defect_class": "late captions"
+  },
+  {
+   "check": "caption safe area (top 8%, bottom 20%, right 12% clear)",
+   "status": "PASS",
+   "measured": "0 events outside",
+   "defect_class": "captions in platform UI"
+  },
+  {
+   "check": "caption clearance from other on-screen text (>= 48 px)",
+   "status": "FAIL",
+   "measured": "6 caption events crowd other text",
+   "detail": [
+    "12.5-12.9 s caption 'looks fine to': 'confirm e' under the caption",
+    "14.0-14.4 s caption 'The problem is': 'Consult, cut, wash and style, with a nec' within 48 px of the caption",
+    "15.9-17.0 s caption 'Looks fine isn't': 'Prices include the wash and finish. Unde' within 48 px of the caption",
+    "17.1-17.4 s caption 'a measurement.': 'Sunday' under the caption",
+    "31.4-32.1 s caption 'Motif calls it': 'critical-path-bytes: critical path kb -' within 48 px of the caption",
+    "32.2-32.7 s caption 'unknown': 'PASS critical-path-bytes: critical path ' within 48 px of the caption"
+   ],
+   "defect_class": "captions over screen text"
+  },
+  {
+   "check": "evidence lines (whole line in frame, still, >= 28 px, >= 1.6 s)",
+   "status": "FAIL",
+   "measured": "9 beats, 8 failing",
+   "detail": [
+    "b01-prompt [3.3-11.1 s] 'I need a sample booking page': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read '~/booking $ opencode run \"I need a san p'); line incomplete in frame (best read '~/booking $ opencode run \"I need a san page plain HTML and C'); line incomplete in frame (best read '~/booking $ opencode run \"I need a san page, p'); line incomplete in frame (best ",
+    "b02-sample-label [11.1-17.9 s] 'This is a sample page, not a customer site.': still+readable 0.1 s (needs 1.6); glyph height 25 px < 28; glyph height 26 px < 28; line incomplete in frame (best read 'olde page, not a customer site.'); line incomplete in frame (best read 'page, nee a customer site.'); line incomplete in frame (best read 'sample page, not a customer site.'); line incomplete in frame (best read '",
+    "b03-check-call [17.9-24.2 s] 'check_design_contract': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read '\"idempotency_ a\", \"contrast-non-text\",\"target-size-aa\",\"'); line incomplete in frame (best read '\"measure-max\",\"clamp-ratio\", \"hover-durati orizontal-scroll\"'); line incomplete in frame (best read ', target he PASS reduced-motion: Reduced mot PASS focus-ring'); l",
+    "b04-fail-line [24.2-28.1 s] 'FAIL sticky-chrome: Sticky chrome too tall: mobile': still+readable 0.0 s (needs 1.6); line enters the right 12% (platform rail), ink to x=1048; line enters the right 12% (platform rail), ink to x=1060; line incomplete in frame (best read 'AIL sticky-chrome: Sticky chrom PASS focus-ring: Outline 2px'); line incomplete in frame (best read 'Reduced motion is handled. ticky chrome too ta",
+    "b05-unknown [31.1-33.4 s] 'UNKNOWN contrast-non-text: Not checked': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read 'PASS reduced-motion: Reduced motion is hand! FAIL sticky-chr'); line incomplete in frame (best read 'the worst pixel if the ground : ast-non-text: Not checked: p'); line touches the frame edge",
+    "b06-fix-note [33.4-35.3 s] 'the sticky bar is 66px': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read 'ast-non-text: Not checked: pro\\x: the sticky ize-aa: Target '); line incomplete in frame (best read 'ing the bar to 56px (44p> PASS sticky-chrome: PASS focus-rin'); line touches the frame edge",
+    "b07-pass [35.3-37.2 s] 'PASS sticky-chrome: Sticky chrome is within budget': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read 'cky-chrome: Sticky chrome is within budyre, Cle uS-ring: Out'); line incomplete in frame (best read 'ing the bar to 56px (44p> PASS sticky-chrome: PASS focus-rin'); line touches the frame edge",
+    "b08-all-pass [37.2-39.6 s] 'all 14 rules PASS': still+readable 0.0 s (needs 1.6); line incomplete in frame (best read 'horizontal-scroll: No horizontal overf lt tical-path-bytes: '); line outside the safe area (y 150-260); line outside the safe area (y 151-261); line outside the safe area (y 152-262); line outside the safe area (y 62-105); line touches the frame edge"
+   ],
+   "defect_class": "cropped / moving / unreadable evidence"
+  },
+  {
+   "check": "run ids and source labels (one claim = one run, or a visible label)",
+   "status": "PASS",
+   "measured": "6 checks",
+   "defect_class": "mixed runs presented as one"
+  },
+  {
+   "check": "PII and plan-wall sweep (OCR of every sampled frame)",
+   "status": "PASS",
+   "measured": "0 findings",
+   "defect_class": "personal data / plan walls on screen"
+  }
+ ],
+ "evidence": [
+  {
+   "id": "b01-prompt",
+   "text": "I need a sample booking page",
+   "window": [
+    3.3,
+    11.1
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 0.61,
+   "best_read": "~/booking $ opencode run \"I need a san pagel",
+   "glyph_px": null,
+   "run_id": "ax05-run-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san p')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san page plain HTML and C')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san page, p')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san page, plaifj')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san page, plain HTML aff')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san page, plain HTML and ')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san page, plain HTML')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san page, plain ff')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san page, plain')",
+    "line incomplete in frame (best read '~/booking $ opencode run \"I need a san pagel')"
+   ]
+  },
+  {
+   "id": "b02-sample-label",
+   "text": "This is a sample page, not a customer site.",
+   "window": [
+    11.1,
+    17.9
+   ],
+   "readable_still_hold_s": 0.1,
+   "best_coverage": 1.0,
+   "best_read": "This is a sample page, not a customer site.",
+   "glyph_px": 26.5,
+   "run_id": "ax05-run-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "glyph height 25 px < 28",
+    "glyph height 26 px < 28",
+    "line incomplete in frame (best read 'olde page, not a customer site.')",
+    "line incomplete in frame (best read 'page, nee a customer site.')",
+    "line incomplete in frame (best read 'sample page, not a customer site.')",
+    "line incomplete in frame (best read 'ws not a customer site.')"
+   ]
+  },
+  {
+   "id": "b03-check-call",
+   "text": "check_design_contract",
+   "window": [
+    17.9,
+    24.2
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 0.9,
+   "best_read": "\u00ae motif check design contract {\"fac",
+   "glyph_px": 42.0,
+   "run_id": "ax05-run-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read '\"idempotency_ a\", \"contrast-non-text\",\"target-size-aa\",\"')",
+    "line incomplete in frame (best read '\"measure-max\",\"clamp-ratio\", \"hover-durati orizontal-scroll\"')",
+    "line incomplete in frame (best read ', target he PASS reduced-motion: Reduced mot PASS focus-ring')",
+    "line incomplete in frame (best read 'jht\", \"measure-max\",\"clamp-ratio\", \"hover-d \u2018no-horizontal-s')",
+    "line incomplete in frame (best read 'ky chrome desktop px\":0,\"sticky chrome _n rue, \"target_width')",
+    "line incomplete in frame (best read 'ky chrome desktop px\":0,\"sticky chrome _n rue,\"target width ')",
+    "line incomplete in frame (best read 'ky chrome desktop px\":0,\"sticky chrome n rue, \"target_width_')",
+    "line incomplete in frame (best read 'ky chrome desktop px\":0,\"sticky chrome nr rue, \"target_width')",
+    "line outside the safe area (y 67-111)",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b04-fail-line",
+   "text": "FAIL sticky-chrome: Sticky chrome too tall: mobile 66px > 56",
+   "window": [
+    24.2,
+    28.1
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 0.9,
+   "best_read": "FAIL sticky-chrome: Sticky chrome too tall: PASS focus-ring: Outline 2px at 6.67",
+   "glyph_px": 29.5,
+   "run_id": "ax05-run-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line enters the right 12% (platform rail), ink to x=1048",
+    "line enters the right 12% (platform rail), ink to x=1060",
+    "line incomplete in frame (best read 'AIL sticky-chrome: Sticky chrom PASS focus-ring: Outline 2px')",
+    "line incomplete in frame (best read 'Reduced motion is handled. ticky chrome too tall: mobile 66p')",
+    "line incomplete in frame (best read 'icky-chrome: Sticky chrome too tall: mobile 6 Outline 2px at')",
+    "line incomplete in frame (best read 'motion: Reduced motion is handled. hrome: Sticky chrome too ')",
+    "line incomplete in frame (best read 'n: Reduced motion is handled. Sticky chrome too tall: mobile')",
+    "line incomplete in frame (best read 'reduced-motion: Reduced motion is handled. L sticky-chrome: ')",
+    "line incomplete in frame (best read 'sticky-chrome: Sticky chrome too tall: PASS focus-ring: Outl')"
+   ]
+  },
+  {
+   "id": "b05-unknown",
+   "text": "UNKNOWN contrast-non-text: Not checked",
+   "window": [
+    31.1,
+    33.4
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "UNKNOWN contrast-non-text: Not checked: pro\\",
+   "glyph_px": 30.5,
+   "run_id": "ax05-run-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'PASS reduced-motion: Reduced motion is hand! FAIL sticky-chr')",
+    "line incomplete in frame (best read 'the worst pixel if the ground : ast-non-text: Not checked: p')",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b06-fix-note",
+   "text": "the sticky bar is 66px",
+   "window": [
+    33.4,
+    35.3
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "ro\\x: the sticky bar is 66px (must be <56p",
+   "glyph_px": 34.0,
+   "run_id": "ax05-run-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'ast-non-text: Not checked: pro\\x: the sticky ize-aa: Target ')",
+    "line incomplete in frame (best read 'ing the bar to 56px (44p> PASS sticky-chrome: PASS focus-rin')",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b07-pass",
+   "text": "PASS sticky-chrome: Sticky chrome is within budget.",
+   "window": [
+    35.3,
+    37.2
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "PASS sticky-chrome: Sticky chrome is within bud PASS focus-ring: Outline 2px at ",
+   "glyph_px": 28.0,
+   "run_id": "ax05-run-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'cky-chrome: Sticky chrome is within budyre, Cle uS-ring: Out')",
+    "line incomplete in frame (best read 'ing the bar to 56px (44p> PASS sticky-chrome: PASS focus-rin')",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b08-all-pass",
+   "text": "all 14 rules PASS",
+   "window": [
+    37.2,
+    39.6
+   ],
+   "readable_still_hold_s": 0.0,
+   "best_coverage": 1.0,
+   "best_read": "Re-check: **all 14 rules PASS**",
+   "glyph_px": 37.0,
+   "run_id": "ax05-run-2026-11-22",
+   "status": "FAIL",
+   "reasons": [
+    "line incomplete in frame (best read 'horizontal-scroll: No horizontal overf lt tical-path-bytes: ')",
+    "line outside the safe area (y 150-260)",
+    "line outside the safe area (y 151-261)",
+    "line outside the safe area (y 152-262)",
+    "line outside the safe area (y 62-105)",
+    "line touches the frame edge"
+   ]
+  },
+  {
+   "id": "b09-url",
+   "text": "motif.asv-labs.com",
+   "window": [
+    41.0,
+    45.8
+   ],
+   "readable_still_hold_s": 2.1,
+   "best_coverage": 1.0,
+   "best_read": "motif.asv-labs.com",
+   "glyph_px": 46.0,
+   "run_id": "overlay",
+   "status": "ok",
+   "reasons": []
+  }
+ ],
+ "word_endings": [
+  {
+   "t": 3.14,
+   "source": "take AX-05.mov",
+   "last_word": "yet.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 8.36,
+   "source": "take AX-05.mov",
+   "last_word": "exist.",
+   "lost_ms": 100,
+   "pause_after": true
+  },
+  {
+   "t": 9.96,
+   "source": "take AX-05.mov",
+   "last_word": "it,",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 10.79,
+   "source": "take AX-05.mov",
+   "last_word": "check",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 12.02,
+   "source": "take AX-05.mov",
+   "last_word": "builds,",
+   "lost_ms": 70,
+   "pause_after": true
+  },
+  {
+   "t": 15.6,
+   "source": "take AX-05.mov",
+   "last_word": "fine.",
+   "lost_ms": 20,
+   "pause_after": true
+  },
+  {
+   "t": 17.51,
+   "source": "voice memo AX-05",
+   "last_word": "measurement.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 20.05,
+   "source": "take AX-05.mov",
+   "last_word": "contract,",
+   "lost_ms": 220,
+   "pause_after": true
+  },
+  {
+   "t": 21.3,
+   "source": "take AX-05.mov",
+   "last_word": "rules,",
+   "lost_ms": 30,
+   "pause_after": true
+  },
+  {
+   "t": 22.54,
+   "source": "take AX-05.mov",
+   "last_word": "values,",
+   "lost_ms": 40,
+   "pause_after": true
+  },
+  {
+   "t": 23.84,
+   "source": "take AX-05.mov",
+   "last_word": "fail.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 24.88,
+   "source": "take AX-05.mov",
+   "last_word": "yet,",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 27.18,
+   "source": "take AX-05.mov",
+   "last_word": "measured",
+   "lost_ms": 10,
+   "pause_after": true
+  },
+  {
+   "t": 28.44,
+   "source": "take AX-05.mov",
+   "last_word": "needs.",
+   "lost_ms": 30,
+   "pause_after": true
+  },
+  {
+   "t": 33.68,
+   "source": "on-camera pickup AX-05_Update.mov",
+   "last_word": "pass.",
+   "lost_ms": 210,
+   "pause_after": true
+  },
+  {
+   "t": 36.27,
+   "source": "take AX-05.mov",
+   "last_word": "again.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 39.36,
+   "source": "take AX-05.mov",
+   "last_word": "done.",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 40.14,
+   "source": "take AX-05.mov",
+   "last_word": "Motif,",
+   "lost_ms": 160,
+   "pause_after": true
+  },
+  {
+   "t": 41.67,
+   "source": "take AX-05.mov",
+   "last_word": "code,",
+   "lost_ms": 0,
+   "pause_after": true
+  },
+  {
+   "t": 43.57,
+   "source": "take AX-05.mov",
+   "last_word": "taste.",
+   "lost_ms": 30,
+   "pause_after": true
+  },
+  {
+   "t": 45.44,
+   "source": "take AX-05.mov",
+   "last_word": "today.",
+   "lost_ms": 100,
+   "pause_after": true
+  }
+ ],
+ "segments": [
+  {
+   "src": "take AX-05.mov",
+   "t0": 0.0,
+   "t1": 3.4,
+   "offset": 1.03
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 3.2,
+   "t1": 8.6,
+   "offset": 2.097
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 8.4,
+   "t1": 10.2,
+   "offset": 2.53
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 10.2,
+   "t1": 11.1,
+   "offset": 2.63
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 11.1,
+   "t1": 12.3,
+   "offset": 3.597
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 11.9,
+   "t1": 16.0,
+   "offset": 3.764
+  },
+  {
+   "src": "voice memo AX-05",
+   "t0": 15.6,
+   "t1": 17.9,
+   "offset": -13.436
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 17.9,
+   "t1": 20.2,
+   "offset": 2.13
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 20.2,
+   "t1": 21.6,
+   "offset": 2.297
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 21.2,
+   "t1": 22.8,
+   "offset": 2.431
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 22.4,
+   "t1": 24.1,
+   "offset": 2.63
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 24.1,
+   "t1": 25.3,
+   "offset": 3.564
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 24.9,
+   "t1": 27.5,
+   "offset": 4.264
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 27.1,
+   "t1": 28.6,
+   "offset": 6.73
+  },
+  {
+   "src": "on-camera pickup AX-05_Update.mov",
+   "t0": 28.2,
+   "t1": 34.0,
+   "offset": -27.869
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 33.6,
+   "t1": 36.5,
+   "offset": 10.597
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 36.5,
+   "t1": 39.7,
+   "offset": 10.93
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 39.3,
+   "t1": 40.4,
+   "offset": 11.83
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 40.1,
+   "t1": 41.9,
+   "offset": 12.03
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 41.9,
+   "t1": 43.8,
+   "offset": 12.197
+  },
+  {
+   "src": "take AX-05.mov",
+   "t0": 43.4,
+   "t1": 45.7,
+   "offset": 12.597
+  }
+ ],
+ "joins": [
+  {
+   "t": 3.3,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 8.5,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 10.2,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 11.1,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 12.1,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 15.8,
+   "kind": "source change"
+  },
+  {
+   "t": 17.9,
+   "kind": "source change"
+  },
+  {
+   "t": 20.2,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 21.4,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 22.6,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 24.1,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 25.1,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 27.3,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 28.4,
+   "kind": "source change"
+  },
+  {
+   "t": 33.8,
+   "kind": "source change"
+  },
+  {
+   "t": 36.5,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 39.5,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 40.25,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 41.9,
+   "kind": "cut inside one source"
+  },
+  {
+   "t": 43.6,
+   "kind": "cut inside one source"
+  }
+ ],
+ "cannot_check": [
+  "Whether a face looks plastic or haloed (no reliable metric; needs eyes).",
+  "Whether a voice sounds natural, warbly or pumped (needs ears or a blind A/B).",
+  "Proper nouns: both ASR models mishear them, so they are listed for a human listen, not passed or failed.",
+  "Whether the on-screen material is a real run (the gate checks the declared run id and the visible source label, not the truth of the run).",
+  "Whether a claim is true. It checks that the declared proof text is readable on screen while the claim is spoken.",
+  "Caption drawn over the face during a transition (no face/caption overlap model).",
+  "Font legibility issues such as 0 vs O.",
+  "Layout churn and pacing feel.",
+  "Anything outside the declared evidence beats: a beat the manifest forgets is not checked."
+ ]
+}

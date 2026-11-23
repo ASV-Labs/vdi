@@ -1,0 +1,196 @@
+{
+  "id": "AX-05-v4",
+  "video_hint": "ax:out/AX-05-edit-v4.mp4",
+  "platform": "tiktok,reels,shorts",
+  "written_from": [
+    "ax:SCRIPTS.md",
+    "ax:PICKUPS.md",
+    "ax:V5-ADDENDUM.md",
+    "ax:GEMINI-REVIEW-4.md",
+    "ax:review-independent/meas/NOTES-working.md (v4 timings)",
+    "ax:screens/agent/README.md"
+  ],
+  "note": "Declares INTENT (what should be said and shown), not what the v4 edit did. Evidence windows are the v4 times at which the words are spoken.",
+  "script_text": "My agent said done. Motif said not yet. Sample booking page for a shop that doesn't exist. One prompt. Build it, check it with Motif before you finish. It builds. Looks fine to me too. That's the problem. Looks fine isn't a measurement. Then it calls check design contract. Named rules. Measured values. Pass or fail. Not yet. Each fail shows what it measured and what the rule needs. And if the agent never measured something, Motif calls it unknown. Never a pass. It fixes what failed and checks again. Now it gets to say done. Motif. Your agent writes the code. Motif gives it taste. Free trial, no card. Link's in the caption.",
+  "proper_nouns": [
+    "Motif",
+    "ASV Labs"
+  ],
+  "accepted_deviations": [
+    {
+      "script": "calls check design contract",
+      "spoken": "calls back a design contract",
+      "note": "V5-ADDENDUM leave-as-spoken list"
+    },
+    {
+      "script": "Free trial, no card. Link's in the caption.",
+      "spoken": "Get a free trial, no card today.",
+      "note": "V5-ADDENDUM leave-as-spoken list"
+    }
+  ],
+  "caption_band_px": [
+    1000,
+    1380
+  ],
+  "source_audio": [
+    {
+      "path": "ax:raw/AX-05.mov",
+      "label": "take AX-05.mov",
+      "kind": "camera"
+    },
+    {
+      "path": "ax:pickups/AX-05.wav",
+      "label": "voice memo AX-05",
+      "kind": "voice"
+    },
+    {
+      "path": "ax:pickups/oncam/AX-05.wav",
+      "label": "on-camera pickup AX-05_Update.mov",
+      "kind": "camera"
+    }
+  ],
+  "evidence_beats": [
+    {
+      "id": "b01-prompt",
+      "t0": 3.3,
+      "t1": 11.1,
+      "text": "I need a sample booking page",
+      "run_id": "ax05-run-2026-11-22",
+      "source_label": null,
+      "claim": "sample-page",
+      "spoken": "Sample booking page for a shop that doesn't exist. One prompt."
+    },
+    {
+      "id": "b02-sample-label",
+      "t0": 11.1,
+      "t1": 17.9,
+      "text": "This is a sample page, not a customer site.",
+      "run_id": "ax05-run-2026-11-22",
+      "source_label": null,
+      "claim": "sample-page",
+      "spoken": "It builds. Looks fine to me too."
+    },
+    {
+      "id": "b03-check-call",
+      "t0": 17.9,
+      "t1": 24.2,
+      "text": "check_design_contract",
+      "run_id": "ax05-run-2026-11-22",
+      "source_label": null,
+      "claim": "check",
+      "spoken": "Then it calls check design contract"
+    },
+    {
+      "id": "b04-fail-line",
+      "t0": 24.2,
+      "t1": 28.1,
+      "text": "FAIL sticky-chrome: Sticky chrome too tall: mobile 66px > 56",
+      "run_id": "ax05-run-2026-11-22",
+      "source_label": null,
+      "claim": "check",
+      "spoken": "Not yet. Each fail shows what it measured and what the rule needs."
+    },
+    {
+      "id": "b05-unknown",
+      "t0": 31.1,
+      "t1": 33.4,
+      "text": "UNKNOWN contrast-non-text: Not checked",
+      "run_id": "ax05-run-2026-11-22",
+      "source_label": null,
+      "claim": "check",
+      "spoken": "Motif calls it unknown, not a pass"
+    },
+    {
+      "id": "b06-fix-note",
+      "t0": 33.4,
+      "t1": 35.3,
+      "text": "the sticky bar is 66px",
+      "run_id": "ax05-run-2026-11-22",
+      "source_label": null,
+      "claim": "check",
+      "spoken": "It fixes what failed"
+    },
+    {
+      "id": "b07-pass",
+      "t0": 35.3,
+      "t1": 37.2,
+      "text": "PASS sticky-chrome: Sticky chrome is within budget.",
+      "run_id": "ax05-run-2026-11-22",
+      "source_label": null,
+      "claim": "check",
+      "spoken": "and checks again"
+    },
+    {
+      "id": "b08-all-pass",
+      "t0": 37.2,
+      "t1": 39.6,
+      "text": "all 14 rules PASS",
+      "run_id": "ax05-run-2026-11-22",
+      "source_label": null,
+      "claim": "check",
+      "spoken": "Now it gets to say done."
+    },
+    {
+      "id": "b09-url",
+      "t0": 41.0,
+      "t1": 45.8,
+      "text": "motif.asv-labs.com",
+      "run_id": "overlay",
+      "source_label": null,
+      "claim": "cta",
+      "spoken": "Get a free trial, no card today."
+    }
+  ],
+  "known_blockers": [
+    {
+      "id": "AX05-K1",
+      "what": "33.6 s 'not a pass.' loses the /s/",
+      "source": "V5-ADDENDUM AX-05"
+    },
+    {
+      "id": "AX05-K2",
+      "what": "28.14-28.53 s 12-frame face shot of the old take, then the pickup",
+      "source": "V5-ADDENDUM AX-05"
+    },
+    {
+      "id": "AX05-K3",
+      "what": "26.6-28.1 s FAIL line's label off the left edge",
+      "source": "V5-ADDENDUM AX-05"
+    },
+    {
+      "id": "AX05-K4",
+      "what": "15.83 s and 24.10 s joins dip to digital zero for 8 ms",
+      "source": "V5-ADDENDUM AX-05"
+    },
+    {
+      "id": "AX05-T3",
+      "what": "Pickup grade mismatch at 28.53 s (skin dE 6.3)",
+      "source": "V5-ADDENDUM T3"
+    },
+    {
+      "id": "AX05-G1",
+      "what": "Evidence text cropped (worst in AX-04/AX-05)",
+      "source": "GEMINI-REVIEW-4 #1"
+    },
+    {
+      "id": "AX05-G3",
+      "what": "Ending too abrupt",
+      "source": "GEMINI-REVIEW-4 #3"
+    },
+    {
+      "id": "AX05-G4",
+      "what": "Rushed joins 0:17-0:18, 0:28-0:29; gated tail 'failure'",
+      "source": "GEMINI-REVIEW-4 #4"
+    },
+    {
+      "id": "AX05-G5",
+      "what": "Face: plastic smoothing and halo",
+      "source": "GEMINI-REVIEW-4 #5"
+    },
+    {
+      "id": "AX05-G6",
+      "what": "Voice level/presence step at ~0:40 CTA",
+      "source": "GEMINI-REVIEW-4 #6"
+    }
+  ]
+}

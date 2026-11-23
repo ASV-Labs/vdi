@@ -1,0 +1,153 @@
+{
+  "id": "AX-02-v4",
+  "video_hint": "ax:out/AX-02-edit-v4.mp4",
+  "platform": "tiktok,reels,shorts",
+  "written_from": [
+    "ax:SCRIPTS.md",
+    "ax:PICKUPS.md",
+    "ax:V5-ADDENDUM.md",
+    "ax:GEMINI-REVIEW-4.md",
+    "ax:review-independent/meas/NOTES-working.md (v4 timings)",
+    "ax:screens/ax02/README.md"
+  ],
+  "note": "Declares INTENT (what should be said and shown), not what the v4 edit did. Evidence windows are the v4 times at which the words are spoken.",
+  "script_text": "Your agent can connect to a thousand tools. That doesn't mean it should have permission to use them. I'm Charles. Army vet. I build with AI agents, in public. This is ASV Labs. MCP made connecting tools easy. It didn't decide what your agent is allowed to do with them. So here's the rule. A human scopes the tools before the agent gets them. No agent writes its own permissions. Army version. You don't walk into the arms room and sign out your own rifle. Somebody checks the roster first. Grant what the job needs. Everything else stays off. Need more? A human says yes or no. I wrote the long version. MCP the Right Way. Full article's on my account, A Salty Vet. Follow ASV Labs for the rest.",
+  "proper_nouns": [
+    "MCP",
+    "ASV Labs",
+    "A Salty Vet",
+    "Charles"
+  ],
+  "accepted_deviations": [
+    {
+      "script": "Army vet",
+      "spoken": "an Army soldier",
+      "note": "V5-ADDENDUM leave-as-spoken list"
+    }
+  ],
+  "caption_band_px": [
+    1000,
+    1380
+  ],
+  "source_audio": [
+    {
+      "path": "ax:raw/AX-02.mov",
+      "label": "take AX-02.mov",
+      "kind": "camera"
+    },
+    {
+      "path": "ax:pickups/AX-02.wav",
+      "label": "voice memo AX-02",
+      "kind": "voice"
+    },
+    {
+      "path": "ax:pickups/oncam/AX-02.wav",
+      "label": "on-camera pickup AX-02-Update.mov",
+      "kind": "camera"
+    }
+  ],
+  "evidence_beats": [
+    {
+      "id": "b01-cover",
+      "t0": 13.8,
+      "t1": 17.0,
+      "text": "MCP the Right Way",
+      "run_id": "capture-x-article",
+      "source_label": null,
+      "claim": "article",
+      "spoken": "MCP made connecting tools easy"
+    },
+    {
+      "id": "b02-rule-card",
+      "t0": 17.0,
+      "t1": 21.8,
+      "text": "A human scopes the tools.",
+      "run_id": "text-card",
+      "source_label": null,
+      "claim": "rule",
+      "spoken": "A human scopes the tools before the agent gets them"
+    },
+    {
+      "id": "b03-in-practice",
+      "t0": 27.1,
+      "t1": 33.3,
+      "text": "MCP the Right Way",
+      "run_id": "capture-x-article",
+      "source_label": null,
+      "claim": "article",
+      "spoken": "Grant what the job needs ... A human says yes or no"
+    },
+    {
+      "id": "b04-long-version",
+      "t0": 33.3,
+      "t1": 36.2,
+      "text": "@ASaltyVet",
+      "run_id": "capture-x-article",
+      "source_label": null,
+      "claim": "article",
+      "spoken": "I wrote the long version. MCP the Right Way."
+    },
+    {
+      "id": "b05-handle",
+      "t0": 36.2,
+      "t1": 40.4,
+      "text": "@ASaltyVet",
+      "run_id": "overlay",
+      "source_label": null,
+      "claim": "cta",
+      "spoken": "Full article's on my account, A Salty Vet"
+    }
+  ],
+  "known_blockers": [
+    {
+      "id": "AX02-K1",
+      "what": "End 'rest.' cut (keep /st/ + hold)",
+      "source": "V5-ADDENDUM AX-02"
+    },
+    {
+      "id": "AX02-K2",
+      "what": "27.27 s 'first.' loses its /t/",
+      "source": "V5-ADDENDUM AX-02"
+    },
+    {
+      "id": "AX02-T2",
+      "what": "2-3 frame flash shot at 4.70 s",
+      "source": "V5-ADDENDUM T2"
+    },
+    {
+      "id": "AX02-T3",
+      "what": "Pickup grade mismatch at 25.87 s and 36.27 s (skin dE 6.7)",
+      "source": "V5-ADDENDUM T3"
+    },
+    {
+      "id": "AX02-G1",
+      "what": "Evidence text cropped at the right edge",
+      "source": "GEMINI-REVIEW-4 #1"
+    },
+    {
+      "id": "AX02-G2",
+      "what": "Caption 'my account' sits on the '@ASaltyVet on X' lower third",
+      "source": "GEMINI-REVIEW-4 #2"
+    },
+    {
+      "id": "AX02-G3",
+      "what": "Ending too abrupt",
+      "source": "GEMINI-REVIEW-4 #3"
+    },
+    {
+      "id": "AX02-G4",
+      "what": "Rushed joins 0:03-0:04, 0:21-0:22",
+      "source": "GEMINI-REVIEW-4 #4"
+    },
+    {
+      "id": "AX02-G5",
+      "what": "Face: plastic smoothing and halo",
+      "source": "GEMINI-REVIEW-4 #5"
+    },
+    {
+      "id": "AX02-L",
+      "what": "1 s level steps 11.30 s +2.5 dB, 30.33 s +2.2 dB",
+      "source": "reviewer NOTES-working.md"
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+# Source register — every non-lesson rule cites an id from this file.
+# tier: primary = the platform/standards body itself; secondary = third party reporting or
+# measuring a primary source; internal = ASV Labs' own measured production history.
+# accessed: date the source was read for this corpus. Re-check anything older than 6 months
+# before relying on it (platform specs move).
+schema_version: 1
+sources:
+  - id: L1
+    tier: internal
+    title: "VDI-LESSONS-001 — AX series lessons (Nov 22–23 2026)"
+    url: corpus/lessons/VDI-LESSONS-001_AX_series.md
+    accessed: 2026-11-23
+
+  - id: yt-shorts-length
+    tier: primary
+    title: "YouTube Help — Understand three-minute YouTube Shorts"
+    url: https://support.google.com/youtube/answer/15424877
+    accessed: 2026-11-23
+    supports: "Square or vertical uploads up to 3 minutes are categorised as Shorts (uploads on/after 15 Oct 2024)."
+
+  - id: yt-encoding
+    tier: primary
+    title: "YouTube Help — Recommended upload encoding settings"
+    url: https://support.google.com/youtube/answer/1722171
+    accessed: 2026-11-23
+    supports: "MP4, no edit lists, moov atom at front (Fast Start); H.264 High, progressive, closed GOP of half the frame rate, CABAC, VBR, 4:2:0; AAC-LC or Opus at 48 kHz; upload at the recorded frame rate."
+
+  - id: yt-synthetic
+    tier: primary
+    title: "YouTube Help — Disclosing use of altered or synthetic content"
+    url: https://support.google.com/youtube/answer/14328491
+    accessed: 2026-11-23
+    supports: "Creators must disclose realistic altered or synthetic content; unrealistic content and minor edits are exempt."
+
+  - id: google-safe-zone
+    tier: secondary
+    title: "AdKit — YouTube Shorts ad safe zones (measured from Google's universal vertical template)"
+    url: https://adkit.so/tools/safe-zones/youtube
+    primary_url: https://services.google.com/fh/files/misc/universalsafezones-youtube.pdf
+    accessed: 2026-11-23
+    supports: "Google's transparent vertical template leaves x48–888, y288–1248 on 1080×1920 (≈15% top, 35% bottom reserved)."
+
+  - id: meta-safe-zone
+    tier: secondary
+    title: "Inro / AdManage — Instagram Reels safe zone (Meta Ads Guide figures)"
+    url: https://www.inro.social/tools/instagram-reels-safe-zone-checker
+    also: https://admanage.ai/instagram-reels-safe-zone
+    accessed: 2026-11-23
+    supports: "Meta's Reels ad guidance: keep 14% top, 35% bottom, 6% each side clear; 40% bottom for ads with disclaimers. Meta publishes no organic safe zone."
+
+  - id: reels-length
+    tier: secondary
+    title: "Buffer — How long should Instagram Reels be (2.7M reels; reviewed Nov 2026)"
+    url: https://buffer.com/resources/instagram-reels-length
+    accessed: 2026-11-23
+    supports: "Reels over 3 minutes are not recommended to non-followers; TikTok allows 10 min in-app, 60 min uploaded."
+
+  - id: tiktok-safe-zone
+    tier: secondary
+    title: "ManyPixels — TikTok ad specs with safe zones measured from TikTok's templates"
+    url: https://www.manypixels.co/blog/social-media-design/tiktok-ad-specs
+    also: https://moda.app/resources/sizes/tiktok-ad
+    accessed: 2026-11-23
+    supports: "TikTok publishes no single pixel safe zone; it depends on orientation, caption length and added formats. ~38% of frame fully safe in the standard template."
+
+  - id: strike-safe-zones
+    tier: secondary
+    title: "Strike Social — Safe zone templates for TikTok, Shorts, Reels"
+    url: https://strikesocial.com/blog/maximize-ad-visibility-and-cut-through-the-noise-with-safe-zone-guides
+    accessed: 2026-11-23
+    supports: "Combined 9:16 table; TikTok column: 14% top, 11% left, 22% right, 45% bottom (with up to 4 caption lines)."
+
+  - id: x-length
+    tier: secondary
+    title: "Publer / PostFast — X video length limits"
+    url: https://publer.com/blog/twitter-video-length/
+    also: https://postfa.st/sizes/x/video
+    accessed: 2026-11-23
+    supports: "Non-Premium accounts: 140 s and 512 MB; Premium tiers much longer. H.264 + AAC in MP4/MOV."
+
+  - id: linkedin-specs
+    tier: primary
+    title: "LinkedIn Business — Video ad specs"
+    url: https://business.linkedin.com/advertise/ads/sponsored-content/video-ads/specs
+    accessed: 2026-11-23
+    supports: "Aspect ratios 4:5, 9:16, 16:9, 1:1; min aspect 9:16, max 16:9; width/height 360–1920 px."
+
+  - id: yt-loudness
+    tier: secondary
+    title: "Production Advice — YouTube 'Stats for nerds' and loudness normalisation"
+    url: https://productionadvice.co.uk/stats-for-nerds/
+    accessed: 2026-11-23
+    supports: "YouTube turns down programmes louder than its distribution loudness (≈ −14 LUFS) and does not turn quieter ones up."
+
+  - id: itu-bs1770
+    tier: primary
+    title: "ITU-R BS.1770 — Algorithms to measure audio programme loudness and true-peak level"
+    url: https://www.itu.int/rec/R-REC-BS.1770
+    accessed: 2026-11-23
+    supports: "Definition of LUFS / LKFS integrated loudness and true-peak (dBTP) measurement used by ffmpeg ebur128."
+
+  - id: netflix-ttsg
+    tier: primary
+    title: "Netflix Timed Text Style Guide — General requirements and Supplementals"
+    url: https://backlothelp.netflix.com/hc/en-us/articles/115000239632-Timed-Text-Style-Guide-Supplementals-Marketing-Assets
+    also: https://backlothelp.netflix.com/hc/en-us/articles/215758617
+    accessed: 2026-11-23
+    supports: "Minimum 5/6 s per subtitle event, maximum 7 s, 2-frame minimum gap, 2 lines maximum, 42 characters per line for most Latin-alphabet languages."
+
+  - id: netflix-timing
+    tier: primary
+    title: "Netflix — Subtitle timing guidelines"
+    url: https://backlothelp.netflix.com/hc/en-us/articles/360051554394-Timed-Text-Style-Guide-Subtitle-Timing-Guidelines
+    accessed: 2026-11-23
+    supports: "When dialogue crosses a shot change, out-time 2 frames before the cut or at least half a second after it."
+
+  - id: bbc-subtitles
+    tier: secondary
+    title: "Clevercast summary of BBC Subtitle Guidelines"
+    url: https://clevercast.com/bbc-subtitling-guidelines
+    primary_url: https://bbc.github.io/subtitle-guidelines/
+    accessed: 2026-11-23
+    supports: "160–180 wpm; ≈0.3 s per word minimum on screen; 2 lines recommended; max line width 68% of a 16:9 frame."
+
+  - id: dcmp-captions
+    tier: secondary
+    title: "UC Office of the President — Captioning best practices (BBC vs DCMP)"
+    url: https://ucop.edu/electronic-accessibility/standards-and-best-practices/ecourse-accessibility-checklist/captioning-best-practices.html
+    accessed: 2026-11-23
+    supports: "DCMP minimum display 1.33 s (40 frames at 30 fps); BBC 0.3 s/word."
+
+  - id: ftc-disclosures
+    tier: primary
+    title: "FTC — Disclosures 101 for Social Media Influencers"
+    url: https://www.ftc.gov/influencers
+    also: https://www.ftc.gov/system/files/ftc_gov/pdf/1001A_Influencer%20Guide_508.pdf
+    accessed: 2026-11-23
+    supports: "Video endorsement disclosures belong in the video, not only the description; audio and on-screen together; don't rely only on platform tools."
+
+  - id: shorts-metrics
+    tier: secondary
+    title: "Bytecap / 1of10 — YouTube Shorts metrics (viewed vs swiped away)"
+    url: https://www.bytecap.io/research/youtube-shorts-retention-benchmarks
+    also: https://1of10.com/blog/youtube-shorts-analytics/
+    accessed: 2026-11-23
+    supports: "'Chose to view' = share of times viewers watched instead of swiping; YouTube publishes no official benchmark for it or for retention."

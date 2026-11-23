@@ -1,0 +1,227 @@
+{
+ "id": "AX-01-v3",
+ "video_hint": "ax:out/AX-01-edit-v4.mp4",
+ "platform": "tiktok,reels,shorts",
+ "written_from": [
+  "ax:SCRIPTS.md (AX-01)",
+  "ax:PICKUPS.md",
+  "ax:screens/agent/README.md",
+  "ax:V5-ADDENDUM.md (leave-as-spoken list; v4 timings)",
+  "ax:review-independent/meas/NOTES-working.md (v4 screen timings)"
+ ],
+ "note": "E2E check of the packaged release gate on the AX-01 v3 render. Manifest written for v4 (evidence-beat timings follow v4); only the voice-memo pickups are available as source audio (the camera take is not).",
+ "script_text": "Your coding agent ships fast. It also ships ugly. I'm Charles. Army vet. I build software with AI agents, in public. This is ASV Labs. Independent software, made with intent. A handful of apps. One of them is open right now. It's called Motif. A design library your agent calls over MCP. Guidance, tested templates, design checks. Connect it once. One command, sign in with an email code. Then just ask in plain English. It builds. Then it checks its own work. Contrast, touch targets, line length. Fixes what fails. This studio site was built by an agent following Motif. The studio's fake. The build is real. Free trial, no card. Link's in the caption. Follow ASV Labs. You'll see the wins and the faceplants.",
+ "proper_nouns": [
+  "Motif",
+  "MCP",
+  "ASV Labs",
+  "Charles"
+ ],
+ "accepted_deviations": [
+  {
+   "script": "Army vet",
+   "spoken": "an Army soldier",
+   "note": "V5-ADDENDUM leave-as-spoken list"
+  },
+  {
+   "script": "a design library your agent calls over MCP",
+   "spoken": "a design library that calls over MCP",
+   "note": "V5-ADDENDUM leave-as-spoken list"
+  },
+  {
+   "script": "wins",
+   "spoken": "winds",
+   "note": "V5-ADDENDUM: 'wins' sounding like 'winds' is how it is spoken"
+  }
+ ],
+ "caption_band_px": [
+  1000,
+  1380
+ ],
+ "source_audio": [
+  {
+   "path": "ax:pickups/AX01.m4a",
+   "label": "voice memo AX-01 (pickups)",
+   "kind": "voice"
+  }
+ ],
+ "evidence_beats": [
+  {
+   "id": "b01-now-open",
+   "t0": 12.9,
+   "t1": 15.4,
+   "text": "NOW OPEN",
+   "run_id": "capture-asv-labs-home",
+   "source_label": null,
+   "claim": "one-is-open",
+   "spoken": "One of them is open"
+  },
+  {
+   "id": "b02-templates",
+   "t0": 20.1,
+   "t1": 23.0,
+   "text": "templates",
+   "run_id": "capture-motif-home",
+   "source_label": null,
+   "claim": "tested-templates",
+   "spoken": "Guidance, tested templates, design checks"
+  },
+  {
+   "id": "b03-mcp-add",
+   "t0": 23.0,
+   "t1": 25.4,
+   "text": "opencode mcp add",
+   "run_id": "ax01-connect",
+   "source_label": null,
+   "claim": "connect",
+   "spoken": "Connect it once. One command"
+  },
+  {
+   "id": "b04-email-code",
+   "t0": 25.4,
+   "t1": 26.6,
+   "text": "Enter your code",
+   "run_id": "ax01-connect",
+   "source_label": null,
+   "claim": "connect",
+   "spoken": "sign in with an email code"
+  },
+  {
+   "id": "b05-prompt",
+   "t0": 26.5,
+   "t1": 28.3,
+   "text": "opencode run \"Build the pricing page",
+   "run_id": "ax01b",
+   "source_label": null,
+   "claim": "build-verify",
+   "spoken": "Then just ask in plain English"
+  },
+  {
+   "id": "b06-contrast",
+   "t0": 28.2,
+   "t1": 30.6,
+   "text": "PASS contrast-text-aa: Contrast 12.92:1",
+   "run_id": "ax01b",
+   "source_label": null,
+   "claim": "build-verify",
+   "spoken": "Contrast"
+  },
+  {
+   "id": "b07-target",
+   "t0": 30.6,
+   "t1": 32.3,
+   "text": "PASS target-size-aa",
+   "run_id": "ax01b",
+   "source_label": null,
+   "claim": "build-verify",
+   "spoken": "touch targets"
+  },
+  {
+   "id": "b08-measure-fail",
+   "t0": 31.8,
+   "t1": 33.5,
+   "text": "FAIL measure-max: 66ch is over 65ch",
+   "run_id": "ax01b",
+   "source_label": null,
+   "claim": "build-verify",
+   "spoken": "line length"
+  },
+  {
+   "id": "b09-measure-pass",
+   "t0": 33.5,
+   "t1": 35.4,
+   "text": "PASS measure-max: 60ch is within 45",
+   "run_id": "ax01b",
+   "source_label": null,
+   "claim": "build-verify",
+   "spoken": "Fixes what fails"
+  },
+  {
+   "id": "b10-endcard-url",
+   "t0": 43.6,
+   "t1": 47.1,
+   "text": "motif.asv-labs.com",
+   "run_id": "capture-motif-home",
+   "source_label": null,
+   "claim": "cta",
+   "spoken": "Link's in the caption"
+  }
+ ],
+ "known_blockers": [
+  {
+   "id": "AX01-K1",
+   "what": "End word 'faceplants' loses /ts/; no 0.6-0.8 s hold",
+   "source": "V5-ADDENDUM AX-01; GEMINI-REVIEW-4 #3"
+  },
+  {
+   "id": "AX01-K2",
+   "what": "27.5 s 'in plain English' heard as 'and play English' by both models",
+   "source": "V5-ADDENDUM AX-01"
+  },
+  {
+   "id": "AX01-K3",
+   "what": "6.1 s caption 'I've built' but he says 'I build'",
+   "source": "V5-ADDENDUM AX-01"
+  },
+  {
+   "id": "AX01-K4",
+   "what": "26.5-28.2 s typed prompt from run 1 while results are from AX-01b",
+   "source": "V5-ADDENDUM AX-01"
+  },
+  {
+   "id": "AX01-K5",
+   "what": "25.6-26.5 s site-masked email address on screen (first letter and domain visible)",
+   "source": "V5-ADDENDUM AX-01"
+  },
+  {
+   "id": "AX01-K6",
+   "what": "25.5 s 'Sign in to connect your agent' page flashes ~4 frames",
+   "source": "V5-ADDENDUM AX-01"
+  },
+  {
+   "id": "AX01-K7",
+   "what": "12.9-15.4 s NOW OPEN label in the top 4% / right 12%",
+   "source": "V5-ADDENDUM AX-01"
+  },
+  {
+   "id": "AX01-K8",
+   "what": "20.1-23.0 s nothing on screen shows templates while 'tested templates' is said",
+   "source": "V5-ADDENDUM AX-01"
+  },
+  {
+   "id": "AX01-T1",
+   "what": "Word endings cut at segment ends (Guidance, templates, English)",
+   "source": "V5-ADDENDUM T1; reviewer clip.log"
+  },
+  {
+   "id": "AX01-T2",
+   "what": "2-3 frame flash shot at 4.30 s; black camera panel 20.07 s for 2 frames",
+   "source": "V5-ADDENDUM T2"
+  },
+  {
+   "id": "AX01-G1",
+   "what": "Evidence text cropped at the right edge",
+   "source": "GEMINI-REVIEW-4 #1"
+  },
+  {
+   "id": "AX01-G2",
+   "what": "Caption 'wins and the' sits on the end-card URL",
+   "source": "GEMINI-REVIEW-4 #2"
+  },
+  {
+   "id": "AX01-G4",
+   "what": "Rushed sentence joins 0:23-0:27 and 0:30-0:33",
+   "source": "GEMINI-REVIEW-4 #4"
+  },
+  {
+   "id": "AX01-G5",
+   "what": "Face: plastic smoothing and halo",
+   "source": "GEMINI-REVIEW-4 #5"
+  },
+  {
+   "id": "AX01-G6",
+   "what": "Voice level/presence step ~0:29-0:34",
+   "source": "GEMINI-REVIEW-4 #6; reviewer 1 s steps 4.30 +2.8, 8.97 +2.3, 10.87 +2.1, 34.27 +2.1 dB"
+  }
+ ]
+}

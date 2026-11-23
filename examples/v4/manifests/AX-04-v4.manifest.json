@@ -1,0 +1,257 @@
+{
+  "id": "AX-04-v4",
+  "video_hint": "ax:out/AX-04-edit-v4.mp4",
+  "platform": "tiktok,reels,shorts",
+  "written_from": [
+    "ax:SCRIPTS.md",
+    "ax:PICKUPS.md",
+    "ax:V5-ADDENDUM.md",
+    "ax:GEMINI-REVIEW-4.md",
+    "ax:review-independent/meas/NOTES-working.md (v4 timings)",
+    "ax:screens/ax04/README.md"
+  ],
+  "note": "Declares INTENT (what should be said and shown), not what the v4 edit did. Evidence windows are the v4 times at which the words are spoken.",
+  "script_text": "Your agent just handed you a report. Where did that number come from? I'm Charles, ASV Labs. I built lineage. Open-source provenance for the Hermes agent. Every file your agent writes gets a receipt. Sources, hashes, the tool call, the model, the agent. Then walk it back. File, tool call, source. Click anything for its hashes and timing. Change the data under the report and run verify. It says stale, and names the source that moved. Every link is labeled. Observed, evidenced, or inferred. The guesses carry a confidence. It's in the official Hermes plugin catalog. Reviewed and merged by Nous Research. MIT license. Code's on GitHub. Link's in the caption. Follow ASV Labs for what's next.",
+  "proper_nouns": [
+    "Hermes",
+    "Lineage",
+    "lineage",
+    "Nous Research",
+    "Nous",
+    "GitHub",
+    "MIT",
+    "ASV Labs",
+    "Charles"
+  ],
+  "accepted_deviations": [],
+  "caption_band_px": [
+    1000,
+    1380
+  ],
+  "source_audio": [
+    {
+      "path": "ax:raw/AX-04.mov",
+      "label": "take AX-04.mov",
+      "kind": "camera"
+    },
+    {
+      "path": "ax:pickups/AX-04.wav",
+      "label": "voice memo AX-04",
+      "kind": "voice"
+    }
+  ],
+  "evidence_beats": [
+    {
+      "id": "b01-show",
+      "t0": 10.8,
+      "t1": 13.7,
+      "text": "hermes lineage show q3-note.md",
+      "run_id": "ax04-hermes-glm53-2026-11-22",
+      "source_label": null,
+      "claim": "q3-note-lineage",
+      "spoken": "Every file your agent writes gets a receipt"
+    },
+    {
+      "id": "b02-sources",
+      "t0": 13.7,
+      "t1": 16.0,
+      "text": "from 3 source(s):",
+      "run_id": "ax04-hermes-glm53-2026-11-22",
+      "source_label": null,
+      "claim": "q3-note-lineage",
+      "spoken": "Sources, hashes"
+    },
+    {
+      "id": "b03-model",
+      "t0": 16.0,
+      "t1": 18.3,
+      "text": "by main (glm-5.3)",
+      "run_id": "ax04-hermes-glm53-2026-11-22",
+      "source_label": null,
+      "claim": "q3-note-lineage",
+      "spoken": "the tool call, the model, the agent"
+    },
+    {
+      "id": "b04-graph-file",
+      "t0": 18.3,
+      "t1": 20.1,
+      "text": "q3-note.md",
+      "run_id": "lineage-repo-demo-2026-11-05",
+      "source_label": "demo run from the lineage repo",
+      "claim": "q3-note-lineage",
+      "spoken": "Then walk it back. File"
+    },
+    {
+      "id": "b05-graph-tool",
+      "t0": 20.1,
+      "t1": 21.8,
+      "text": "terminal",
+      "run_id": "lineage-repo-demo-2026-11-05",
+      "source_label": "demo run from the lineage repo",
+      "claim": "q3-note-lineage",
+      "spoken": "tool call, source"
+    },
+    {
+      "id": "b06-inspector",
+      "t0": 21.8,
+      "t1": 24.2,
+      "text": "CONTENT HASH AT FETCH",
+      "run_id": "lineage-repo-demo-2026-11-05",
+      "source_label": "demo run from the lineage repo",
+      "claim": "q3-note-lineage",
+      "spoken": "Click anything for its hashes and timing"
+    },
+    {
+      "id": "b07-sed",
+      "t0": 24.2,
+      "t1": 27.3,
+      "text": "sed -i 's/48900/52900/' sample-revenue.csv",
+      "run_id": "ax04-hermes-glm53-2026-11-22",
+      "source_label": null,
+      "claim": "q3-note-lineage",
+      "spoken": "Change the data under the report and run verify"
+    },
+    {
+      "id": "b08-verdict",
+      "t0": 27.3,
+      "t1": 29.5,
+      "text": "verdict: stale",
+      "run_id": "ax04-hermes-glm53-2026-11-22",
+      "source_label": null,
+      "claim": "q3-note-lineage",
+      "spoken": "It says stale"
+    },
+    {
+      "id": "b09-changed",
+      "t0": 27.3,
+      "t1": 29.5,
+      "text": "changed evidenced sample-revenue.csv",
+      "run_id": "ax04-hermes-glm53-2026-11-22",
+      "source_label": null,
+      "claim": "q3-note-lineage",
+      "spoken": "and names the source"
+    },
+    {
+      "id": "b10-observed",
+      "t0": 29.5,
+      "t1": 31.5,
+      "text": "observed",
+      "run_id": "ax04-hermes-glm53-2026-11-22",
+      "source_label": null,
+      "claim": "labels",
+      "spoken": "Every link is labeled. Observed"
+    },
+    {
+      "id": "b11-inferred",
+      "t0": 32.5,
+      "t1": 35.6,
+      "text": "\"basis\": \"inferred\"",
+      "run_id": "ax04-hermes-glm53-2026-11-22",
+      "source_label": null,
+      "claim": "labels",
+      "spoken": "or inferred. The guesses carry a confidence."
+    },
+    {
+      "id": "b12-catalog",
+      "t0": 35.6,
+      "t1": 38.3,
+      "text": "Reviewed and merged by Nous Research",
+      "run_id": "ax04-hermes-glm53-2026-11-22-github",
+      "source_label": null,
+      "claim": "catalog",
+      "spoken": "It's in the official Hermes plugin catalog. Reviewed and merged by Nous Research."
+    },
+    {
+      "id": "b13-mit",
+      "t0": 40.0,
+      "t1": 41.7,
+      "text": "MIT License",
+      "run_id": "capture-github-repo",
+      "source_label": null,
+      "claim": "license",
+      "spoken": "MIT license"
+    },
+    {
+      "id": "b14-url",
+      "t0": 41.7,
+      "t1": 46.5,
+      "text": "github.com/P0GL0L/hermes-lineage",
+      "run_id": "overlay",
+      "source_label": null,
+      "claim": "cta",
+      "spoken": "Code's on GitHub"
+    }
+  ],
+  "known_blockers": [
+    {
+      "id": "AX04-K1",
+      "what": "18.3-24.2 s graph is the repo demo run (grok-4.7, URL source, 11/5) between glm-5.3 terminal beats, no on-screen label",
+      "source": "V5-ADDENDUM AX-04"
+    },
+    {
+      "id": "AX04-K2",
+      "what": "35.4 s 'confidence.' loses its ending",
+      "source": "V5-ADDENDUM AX-04"
+    },
+    {
+      "id": "AX04-K3",
+      "what": "27.3-29.5 s 'changed ... sample-revenue.csv' not whole and still on 'names the source'",
+      "source": "V5-ADDENDUM AX-04"
+    },
+    {
+      "id": "AX04-K4",
+      "what": "29.5 s caption 'source.' drawn over his face for 2 frames",
+      "source": "V5-ADDENDUM AX-04"
+    },
+    {
+      "id": "AX04-K5",
+      "what": "33.1 s caption 'or inferred.' 0.42 s late",
+      "source": "V5-ADDENDUM AX-04"
+    },
+    {
+      "id": "AX04-K6",
+      "what": "40.2-41.7 s 'MIT License' said over the PR page; no licence shown",
+      "source": "V5-ADDENDUM AX-04"
+    },
+    {
+      "id": "AX04-K7",
+      "what": "3.5 s ad-lib 'Probably doesn't exist.' not in the script",
+      "source": "V5-ADDENDUM AX-04"
+    },
+    {
+      "id": "AX04-K8",
+      "what": "End overlay: zeros in P0GL0L read as letter O",
+      "source": "V5-ADDENDUM AX-04"
+    },
+    {
+      "id": "AX04-T2",
+      "what": "2-3 frame flash at 4.73 s; black camera panel ~7 frames at 38.07 s",
+      "source": "V5-ADDENDUM T2"
+    },
+    {
+      "id": "AX04-G1",
+      "what": "Evidence text cropped; lineage graph node text cut left and right",
+      "source": "GEMINI-REVIEW-4 #1, #7"
+    },
+    {
+      "id": "AX04-G3",
+      "what": "Ending too abrupt",
+      "source": "GEMINI-REVIEW-4 #3"
+    },
+    {
+      "id": "AX04-G4",
+      "what": "Rushed joins 0:04-0:05, 0:19-0:21, 0:35-0:36",
+      "source": "GEMINI-REVIEW-4 #4"
+    },
+    {
+      "id": "AX04-G5",
+      "what": "Face: plastic smoothing and halo",
+      "source": "GEMINI-REVIEW-4 #5"
+    },
+    {
+      "id": "AX04-L",
+      "what": "1 s level steps 13.73, 35.53, 38.07 s (+2.0 dB); 9 ms digital zero at 1.73 s",
+      "source": "reviewer NOTES-working.md"
+    }
+  ]
+}

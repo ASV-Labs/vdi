@@ -1,0 +1,186 @@
+{
+ "ran_at": "2026-11-23 08:49:17",
+ "passed": 19,
+ "total": 19,
+ "cases": [
+  {
+   "id": "Q01",
+   "question": "My last word keeps getting clipped at the end of a pickup. What rule and check apply?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [
+    "VDI-05-R06",
+    "VDI-07-R06"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q02",
+   "question": "How long should the short hold after the last word?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [
+    "VDI-05-R07"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q03",
+   "question": "Can I show the prompt from one agent run and the result from another in the same claim?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [
+    "VDI-04-R02"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q04",
+   "question": "Should captions follow the script or the audio?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [
+    "VDI-06-R01"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q05",
+   "question": "How do I record a terminal so lines are not cropped?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [
+    "VDI-04-R03"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q06",
+   "question": "Is the Gemini web app a valid video reviewer?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q07",
+   "question": "What skin colour difference is allowed at a cut between a take and a pickup?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [
+    "VDI-03-R01",
+    "VDI-08-R01"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q08",
+   "question": "What is the shortest allowed shot?",
+   "tool": "vdi_get",
+   "passed": true,
+   "ids_found": [],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q09",
+   "question": "What must be true before a video is called final?",
+   "tool": "vdi_checklist",
+   "passed": true,
+   "ids_found": [
+    "VDI-11-R01"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q10",
+   "question": "Brief for a 90 s YouTube Short explainer with no presenter: any platform warning?",
+   "tool": "vdi_brief",
+   "passed": true,
+   "ids_found": [],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q11",
+   "question": "Brief for a 45 s product demo with presenter: does it include capture, pickup and screen rules and an ending hold?",
+   "tool": "vdi_brief",
+   "passed": true,
+   "ids_found": [
+    "VDI-02-R01",
+    "VDI-03-R01",
+    "VDI-04-R01"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q12",
+   "question": "Lint: does a 24-word claim sentence get flagged with the claim and the proper nouns?",
+   "tool": "vdi_lint_script",
+   "passed": true,
+   "ids_found": [],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q13",
+   "question": "Lint: a SAY beat over 70 characters fails the board rule",
+   "tool": "vdi_lint_script",
+   "passed": true,
+   "ids_found": [],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q14",
+   "question": "What loudness target and true peak does the gate use, and does YouTube turn quiet videos up?",
+   "tool": "vdi_checklist",
+   "passed": true,
+   "ids_found": [
+    "VDI-07-R02"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q15",
+   "question": "What can the gate NOT check?",
+   "tool": "vdi_gate_spec",
+   "passed": true,
+   "ids_found": [],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q16",
+   "question": "What does Meta say about sound on Reels?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q17",
+   "question": "Masked emails and PLAN_REQUIRED on screen: what is the rule?",
+   "tool": "vdi_checklist",
+   "passed": true,
+   "ids_found": [
+    "VDI-04-R07",
+    "VDI-04-R08"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q18",
+   "question": "Is a tolerance list of misheard words allowed in the gate?",
+   "tool": "vdi_search",
+   "passed": true,
+   "ids_found": [
+    "VDI-11-R03"
+   ],
+   "phrases_missing": []
+  },
+  {
+   "id": "Q19",
+   "question": "Lint: a beat of 70 characters or less passes the board rule",
+   "tool": "vdi_lint_script",
+   "passed": true,
+   "ids_found": [],
+   "phrases_missing": []
+  }
+ ]
+}

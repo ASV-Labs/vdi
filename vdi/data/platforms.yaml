@@ -1,0 +1,96 @@
+# Platform specs. Every number carries a source id (data/sources.yaml) and a status:
+#   verified  = read from the platform's own page
+#   secondary = third party reporting/measuring the platform's material
+#   house     = ASV Labs' own measured rule (VDI-LESSONS-001), stricter or where the platform is silent
+#   seed      = best available, thin; re-check before relying on it
+# Safe zones are fractions of the frame to keep CLEAR of captions, text and key elements.
+schema_version: 1
+as_of: 2026-11-23
+
+house_caption_zone:   # applies to every vertical platform unless the platform's own zone is stricter
+  status: house
+  source: L1
+  clear: {top: 0.08, bottom: 0.20, left: 0.04, right: 0.12}
+  note: "Measured on AX v4 against real platform UI (organic posts). Ads use the platform ad zone below."
+
+platforms:
+  youtube-shorts:
+    name: YouTube Shorts
+    aspect: "9:16"
+    resolution: [1080, 1920]
+    max_duration_s: {value: 180, status: verified, source: yt-shorts-length}
+    length_note: "Up to 3 minutes counts as a Short (square or vertical). Ceiling, not target."
+    ad_safe_zone: {clear: {top: 0.15, bottom: 0.35, left: 0.044, right: 0.178}, status: secondary, source: google-safe-zone}
+    loudness: {integrated_lufs: -14, status: secondary, source: yt-loudness,
+               note: "YouTube turns louder programmes down and does not turn quieter ones up."}
+    encoding: {container: mp4, video: "H.264 High, progressive, closed GOP = fps/2, VBR, 4:2:0",
+               audio: "AAC-LC 48 kHz stereo", faststart: true, frame_rate: "as recorded",
+               status: verified, source: yt-encoding}
+    disclosures: ["Altered/synthetic content toggle for realistic AI content (yt-synthetic)",
+                  "Paid promotion / material connection disclosed in-video (ftc-disclosures)"]
+    hook_metric: {name: "Viewed vs swiped away", status: secondary, source: shorts-metrics,
+                  note: "No official benchmark; compare against your own Shorts of similar length."}
+
+  youtube-long:
+    name: YouTube (long-form)
+    aspect: "16:9"
+    resolution: [1920, 1080]
+    max_duration_s: {value: null, status: seed, source: yt-encoding, note: "Not a constraint for our use."}
+    ad_safe_zone: null
+    loudness: {integrated_lufs: -14, status: secondary, source: yt-loudness}
+    encoding: {container: mp4, video: "H.264 High, progressive, closed GOP = fps/2, VBR, 4:2:0",
+               audio: "AAC-LC 48 kHz stereo", faststart: true, frame_rate: "as recorded",
+               status: verified, source: yt-encoding}
+
+  tiktok:
+    name: TikTok
+    aspect: "9:16"
+    resolution: [1080, 1920]
+    max_duration_s: {value: 600, status: secondary, source: reels-length,
+                     note: "10 min recorded in-app, 60 min uploaded. Use 600 s as the working ceiling."}
+    ad_safe_zone: {clear: {top: 0.14, bottom: 0.45, left: 0.11, right: 0.22}, status: secondary,
+                   source: strike-safe-zones,
+                   note: "TikTok publishes no single zone (tiktok-safe-zone); this is the 4-caption-line worst case. Use TikTok's own template for ads."}
+    loudness: {integrated_lufs: null, status: seed, note: "Not published. Use the house −14 LUFS master."}
+    encoding: {container: mp4, video: "H.264", audio: "AAC", status: secondary, source: tiktok-safe-zone}
+
+  instagram-reels:
+    name: Instagram Reels
+    aspect: "9:16"
+    resolution: [1080, 1920]
+    max_duration_s: {value: 180, status: secondary, source: reels-length,
+                     note: "Longer uploads exist on some accounts, but Reels over 3 min are not recommended to non-followers."}
+    ad_safe_zone: {clear: {top: 0.14, bottom: 0.35, left: 0.06, right: 0.06}, status: secondary,
+                   source: meta-safe-zone, note: "Bottom 0.40 for ads carrying a disclaimer. Profile grid crops to 3:4."}
+    loudness: {integrated_lufs: null, status: seed, note: "Not published. Use the house −14 LUFS master."}
+    encoding: {container: mp4, video: "H.264", audio: "AAC", status: seed}
+
+  x:
+    name: X
+    aspect: "9:16 | 1:1 | 16:9"
+    resolution: [1080, 1920]
+    max_duration_s: {value: 140, status: secondary, source: x-length,
+                     note: "Non-Premium. Premium tiers allow far longer; check the posting account."}
+    ad_safe_zone: null
+    loudness: {integrated_lufs: null, status: seed}
+    encoding: {container: mp4, video: "H.264", audio: "AAC", status: secondary, source: x-length,
+               note: "512 MB file cap on non-Premium."}
+
+  linkedin:
+    name: LinkedIn
+    aspect: "9:16 | 4:5 | 1:1 | 16:9"
+    resolution: [1080, 1920]
+    max_duration_s: {value: null, status: seed, note: "Organic limit not confirmed this pass; keep vertical clips under 3 min."}
+    ad_safe_zone: null
+    aspect_limits: {min: "9:16", max: "16:9", px_range: [360, 1920], status: verified, source: linkedin-specs}
+    loudness: {integrated_lufs: null, status: seed}
+    encoding: {container: mp4, video: "H.264", audio: "AAC", status: seed}
+
+house_master:   # what every ASV Labs final is rendered to before platform export
+  status: house
+  source: L1
+  loudness_integrated_lufs: -14.0
+  loudness_tolerance_lu: 0.5
+  true_peak_max_dbtp: -1.5
+  audio: "AAC-LC 48 kHz stereo"
+  video: "H.264 High, yuv420p, constant frame rate = recorded rate, faststart"
