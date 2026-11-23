@@ -33,7 +33,8 @@ Read it as proof that the packaged gate runs end to end, not as a calibrated ver
 - The manifest was written for **v4**; v3's edit differs, so evidence-beat windows and the script comparison
   are only approximately aligned.
 - Only the voice-memo **pickups** were available as source audio (the camera take wasn't), so word endings
-  were compared on the 9 pickup segments only.
+  were compared on the 9 pickup segments only. (They ran and found 3 lost tails.) With no source audio at all, the word-endings
+  check fails closed: it reports FAIL, not NOT_RUN.
 - Where it overlaps with `vdi check` on the same file it agrees: 6-frame shot at 4.30 s, true peak −0.5 dBTP,
   end hold under 0.1 s.
 - One OCR line contained a site-masked email; it is replaced with `[redacted email]`.
