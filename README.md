@@ -15,27 +15,24 @@ VDI is what we built from that: every rule traces to a measured defect or a cite
 measure **the rendered mp4, never the plan**.
 
 ```text
-$ vdi check AX-01-edit-v3.mp4 --platform youtube-shorts          # a real, known-bad render
-vdi check — AX-01-edit-v3.mp4
-platform youtube-shorts · 46.967 s · 30.0 fps
+$ vdi check AX-01-edit-v3.mp4 --platform youtube-shorts
+vdi check — AX-01-edit-v3.mp4 · youtube-shorts · 46.97 s · 30 fps
 
-  PASS     G-FORMAT        1080×1920 h264 yuv420p aac 48k faststart
-  PASS     G-LOUDNESS      measured=-14.1  threshold=-14.0 ±0.5 LUFS
-  FAIL     G-TRUEPEAK      measured=-0.5  threshold=≤ -1.5 dBTP
-  FAIL     G-SHOT-MIN      measured={"shots": 28, "shortest_frames": 2}  threshold=≥ 12 frames
-              4.30s 6-frame shot
-             33.23s 2-frame shot
-  FAIL     G-TAIL          measured=0.107  threshold=0.58–0.85 s
-             46.86s last speech ends 0.11 s before the end
-  FAIL     G-JOIN-LEVEL    10.87s speech level step +3.4 dB across join  (+12 more)
-  FAIL     G-TEXT-EDGE     19.50s text at right edge: 'Guidance' box=(916, 570, 152, 26) (8 samples)
-  FAIL     G-TEXT-SIZE     18.50s 25 px text held 4.5 s: 'CLI and Grok.'
-  FAIL     G-PII           25.50s email: [redacted — a site-masked address still on screen]
-  WARN     G-FACE-MATCH    only 8 of 27 cuts measured — check the rest by eye
-  NOT_RUN  G-SCRIPT-DIFF   needs --transcript (from two agreeing ASR models) and --script
-  …
-VERDICT: FAIL — do not post.            (excerpt of a real run; 15 checks, ~3 min on 2 CPU cores)
+PASS     G-FORMAT       1080×1920 h264 yuv420p aac 48k
+PASS     G-LOUDNESS     -14.1 LUFS (target -14 ±0.5)
+FAIL     G-TRUEPEAK     -0.5 dBTP (max -1.5)
+FAIL     G-SHOT-MIN     4.30s 6-frame shot · 33.23s 2-frame shot
+FAIL     G-TAIL         ends 0.11 s after the last word (0.58–0.85)
+FAIL     G-JOIN-LEVEL   10.87s +3.4 dB speech step at a join (+12)
+FAIL     G-TEXT-EDGE    19.50s 'Guidance' cut off at the right edge
+FAIL     G-TEXT-SIZE    18.50s 25 px text held 4.5 s (min 28 px)
+FAIL     G-PII          25.50s email on screen [redacted]
+WARN     G-FACE-MATCH   8 of 27 cuts measured — check the rest by eye
+NOT_RUN  G-SCRIPT-DIFF  needs --transcript and --script
+…
+VERDICT: FAIL — do not post.
 ```
+<sub>Condensed from a real run on a known-bad render (15 checks, ~3 min on 2 CPU cores). Values unchanged; one email redacted.</sub>
 
 ## What's in it
 
